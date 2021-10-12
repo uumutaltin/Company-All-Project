@@ -13,15 +13,23 @@
     <div class="row mt-3" style="margin-left: 1px">
 
         <div class="col-sm-5 " >
-           <a href="/contents/add"><button type="button" class="btn btn-primary"  >İçerik Ekle</button> </a>
+            <a href="/news/add"><button type="button" class="btn btn-primary"  >Haber Ekle</button> </a>
+            <a href="/news/category"><button type="button" class="btn btn-primary"  >Kategori Ekle</button> </a>
         </div>
 
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4">
-            <select class="form-select" name="cStatus" id="cStatus">
+        <div class="col-sm-2">
+            <select class="form-select" name="nStatus" id="nStatus">
                 <option value="0" >-- Hepsi</option>
                 <option value="1">Aktif İçerikler</option>
                 <option value="2">Pasif İçerikler</option>
+            </select>
+
+        </div>
+        <div class="col-sm-4">
+            <select class="form-select" name="nAll" id="cAll">
+                <option value="0" >-- Bütün Kategoriler</option>
+                <option value="1">Elektronik</option>
+                <option value="2">Teknoloji</option>
             </select>
         </div>
         <div class="col-sm-1" >
@@ -32,7 +40,7 @@
     </div>
 
     <div class="main-card mb-3 card mainCart mt-3">
-        <div class="card-header cardHeader">İçerikler</div>
+        <div class="card-header cardHeader">Haberler</div>
 
         <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
             <div class="col-sm-6">
@@ -87,10 +95,10 @@
             <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Durum</th>
-                    <th scope="col">Başlık</th>
-                    <th scope="col">Kısa Açıklama</th>
-                    <th scope="col">Detay</th>
+                    <th scope="col">Haberler</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Aktif/Pasif</th>
+                    <th scope="col">Resim</th>
                     <th scope="col">Eklenme Tarihi</th>
                     <th scope="col">İşlem</th>
 
@@ -98,11 +106,11 @@
                 </thead>
                 <tbody id="contentRow">
                 <tr>
+                    <td>Haber Deneme</td>
+                    <td>Kategori</td>
                     <td>Aktif</td>
-                    <td>Başlık</td>
-                    <td>Kısa Açıklama</td>
-                    <td>Detay</td>
-                    <td>Eklenme Tarihi</td>
+                    <td>Resim</td>
+                    <td>13.10.2021</td>
                     <td >
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
@@ -131,8 +139,6 @@
 
         </div>
     </div>
-
-
 
 
 

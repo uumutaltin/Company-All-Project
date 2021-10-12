@@ -15,30 +15,30 @@
         <div class="col-sm-8">
 
             <div class="main-card mb-3 card mainCart">
-                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">İçerik Ekleme</div>
-                <p style="text-align: center;margin-top: 15px;color: black">İçerik bilgilerinizi aşağıda girebilirsiniz.</p>
-                <form class="row p-3" id="customer_add_form">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Haber Ekleme</div>
+                <p style="text-align: center;margin-top: 15px;color: black">Haber bilgilerinizi aşağıda girebilirsiniz.</p>
+                <form class="row p-3" id="news_add_form">
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="ctitle" class="form-label" style="color: black"><b>İçerik Başlık</b></label>
+                        <label for="ntitle" class="form-label" style="color: black"><b>Haber Başlık</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="ctitle" class="form-control" required />
+                        <input type="text" name="ntitle" id="ntitle" class="form-control" required />
                     </div>
 
                     <div class="col-md-1"></div>
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="cdesc" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
+                        <label for="ndesc" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="cdesc" class="form-control" required />
+                        <input type="text" name="ndesc" id="ndesc" class="form-control" required />
                     </div>
 
                     <div class="col-md-1"></div>
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label  class="form-label" style="color: black"><b>Detaylı Açıklama</b></label>
+                        <label  class="form-label" style="color: black"><b>Uzun Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
                         <!--<input type="text" name="cname" id="cdetail" class="form-control" required />-->
@@ -47,12 +47,23 @@
 
                     <div class="col-md-1"></div>
 
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="nimage" class="form-label" style="color: black"><b>Reklam</b></label>
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                        <input type="file" name="nimage" id="nimage" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="cstatus" class="form-label" style="color: black"><b>Durum</b></label>
+                        <label for="nstatus" class="form-label" style="color: black"><b>Aktif/Pasif</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <select class="form-select" name="cstatus" id="cstatus">
+                        <select class="form-select" name="nstatus" id="nstatus">
                             <option value="0" >Pasif</option>
                             <option value="1">Aktif</option>
 
@@ -60,6 +71,25 @@
                     </div>
 
                     <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="ncategory" class="form-label" style="color: black"><b>Kategori</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="ncategory" id="ncategory">
+                            <option value="0" >Elektronik</option>
+                            <option value="1">Tekstil</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
+
+
+
+
 
                     <div class="col-sm-1"></div>
                     <div class="col-md-8"></div>
@@ -85,19 +115,14 @@
 
 
 
-
-
-
-
-
-
-
 </th:block>
+
+
+
 
 <th:block layout:fragment="script">
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
     <script th:src="@{/js/ck5editor.js}"></script>
 </th:block>
-
 </body>
 </html>
