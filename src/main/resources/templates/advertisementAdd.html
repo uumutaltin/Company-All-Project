@@ -1,0 +1,103 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Advertisement Add</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+  <div class="row">
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+      <div class="main-card mb-3 card mainCart">
+        <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Reklam Ekleme</div>
+        <p style="text-align: center;margin-top: 15px;color: black">Reklam Bilgilerinizi Giriniz.</p>
+        <form class="row p-3" id="customer_add_form">
+
+          <div class="col-md-3 mb-3 text-center">
+            <label for="ctitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="text" name="cname" id="ctitle" class="form-control" required />
+          </div>
+
+          <div class="col-md-1"></div>
+
+          <div class="col-md-3 mb-3 text-center">
+            <label for="cdesc" class="form-label" style="color: black"><b>Gösterim Sayısı</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="number" name="cname" id="cdesc" class="form-control" required />
+          </div>
+
+          <div class="col-md-1"></div>
+
+          <div class="col-md-3 mb-3 text-center">
+            <label for="datestart" class="form-label" style="color: black"><b>Başlangıç Tarihi</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="date" name="cname" id="datestart" class="form-control" required />
+          </div>
+          <div class="col-md-3 mb-3 text-center">
+            <label for="dateend" class="form-label" style="color: black"><b>Bitiş Tarihi</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="date" name="cname" id="dateend" class="form-control" required />
+          </div>
+          <div class="col-md-3 mb-3 text-center">
+            <label for="advertımage" class="form-label" style="color: black"><b>Reklam Görseli</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="date" name="cname" id="advertımage" class="form-control" required />
+          </div>
+          <div class="col-md-3 mb-3 text-center">
+            <label for="advertwidth" class="form-label" style="color: black"><b>Reklam Genişlik</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="file" name="cname" id="advertwidth" class="form-control" required />
+          </div>
+          <div class="col-md-3 mb-3 text-center">
+            <label for="advertheight" class="form-label" style="color: black"><b>Reklam Yükseklik</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="text" name="cname" id="advertheight" class="form-control" required />
+          </div>
+          <div class="col-md-3 mb-3 text-center">
+            <label for="advertlink" class="form-label" style="color: black"><b>Reklam Link</b></label>
+          </div>
+          <div class="col-md-8 mb-3">
+            <input type="text" name="cname" id="advertlink" class="form-control" required />
+          </div>
+
+          <div class="col-md-1"></div>
+
+
+
+
+          <div class="col-sm-1"></div>
+          <div class="col-md-8"></div>
+          <div class="col-md-1">
+            <div class="btn-group col-md-3" role="group">
+              <button type="submit" class="btn btn-info mr-1">Ekle</button>
+              <button  class="btn btn-danger">İptal</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+
+    </div>
+    <div class="col-sm-2"></div>
+
+
+  </div>
+
+</th:block>
+</body>
+</html>
