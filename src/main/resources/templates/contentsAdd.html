@@ -1,0 +1,96 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">İçerik Ekleme</div>
+                <p style="text-align: center;margin-top: 15px;color: black">İçerik bilgilerinizi aşağıda girebilirsiniz.</p>
+                <form class="row p-3" id="customer_add_form">
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="ctitle" class="form-label" style="color: black"><b>İçerik Başlık</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="ctitle" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="cdesc" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="cdesc" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="cdetail" class="form-label" style="color: black"><b>Detaylı Açıklama</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="cdetail" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="cstatus" class="form-label" style="color: black"><b>Durum</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="cstatus" id="cstatus">
+                            <option value="0" >Pasif</option>
+                            <option value="1">Aktif</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-sm-1"></div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-1">
+                        <div class="btn-group col-md-3" role="group">
+                            <button type="submit" class="btn btn-info mr-1">Ekle</button>
+                            <button  class="btn btn-danger">İptal</button>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</th:block>
+</body>
+</html>

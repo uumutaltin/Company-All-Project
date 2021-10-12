@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="sidebar">
+<nav id="sidebar" class="active " >
+
+    <ul class="list-unstyled components mb-5 invisiblescroll " style="height: 750px; overflow-y: scroll">
+
+        <h6><a  class="logo">YUT</a></h6>
+        <li class="">
+            <a href="/"><span class="fa fa-user-secret fa-fw"></span>
+                <div class="menu_div" >Admin Paneli</div>
+
+            </a>
+        </li>
+        <li class="">
+            <a href="/category"><span class="far fa-chart-bar"></span>
+                <div class="menu_div">Reklam Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/orders/sale"><span class="fas fa-chart-pie"></span>
+                <div class="menu_div">İçerik Yönetimi</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/orders/buying"><span class="fas fa-users"></span>
+                <div class="menu_div">Müşteri Yönetimi</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/lab-customer"><span class="far fa-image"></span>
+                <div class="menu_div">Galeri Yönetimi</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/company-cashier"><span class="fas fa-exclamation-triangle"></span>
+                <div class="menu_div">Duyurular [0]</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/company-cashier"><span class="fas fa-cubes"></span>
+                <div class="menu_div">Ürünler</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/suppliers"><span class="fas fa-list-alt"></span>
+                <div class="menu_div">Formlar</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/diary"><span class="fas fa-newspaper"></span>
+                <div class="menu_div">Haber Yönetimi</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/warehouse"><span class="fas fa-thumbs-up"></span>
+                <div class="menu_div">Beğeni Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="far fa-check-square"></span>
+                <div class="menu_div">Anket Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="fas fa-bullhorn"></span>
+                <div class="menu_div">Duyuru Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="fas fa-envelope"></span>
+                <div class="menu_div">Mesaj Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="fas fa-gift"></span>
+                <div class="menu_div">Sipariş Yönetimi</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="fas fa-cloud"></span>
+                <div class="menu_div">JSON API Yönetimi</div>
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
+</th:block>
+</body>
+</html>
