@@ -41,7 +41,8 @@
                         <label for="cdetail" class="form-label" style="color: black"><b>Detaylı Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="cdetail" class="form-control" required />
+                        <!--<input type="text" name="cname" id="cdetail" class="form-control" required />-->
+                        <textarea id="editor" name="editor"></textarea>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -92,5 +93,12 @@
 
 
 </th:block>
+
+<th:block layout:fragment="script">
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script th:src="@{/js/ck5editor.js}"></script>
+
+</th:block>
+
 </body>
 </html>
