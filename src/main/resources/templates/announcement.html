@@ -1,0 +1,136 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+
+    <div class="row mt-3" style="margin-left: 1px">
+
+        <div class="col-sm-5 " >
+            <a href="/announcement/add"><button type="button" class="btn btn-primary"  >Duyuru Ekle</button> </a>
+        </div>
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-1" >
+
+        </div>
+
+
+    </div>
+
+    <div class="main-card mb-3 card mainCart mt-3">
+        <div class="card-header cardHeader">Duyurularınız</div>
+
+        <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+            <div class="col-sm-6">
+
+                <div class="row">
+
+                    <div class="col-sm-2 mt-2" style="margin-left: 5px">
+
+                        <p style="color: black"> <b> Sayfa başına </b></p>
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        <select class="form-select" name="aPage" id="aPage">
+                            <option value="5" >5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="-1">Hepsi</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-sm-7">
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="annSearch" aria-describedby="addon-wrapping">
+                    <button id="annSearch" class="btn btn-outline-primary">Ara</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="table-responsive">
+
+            <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Durum</th>
+                    <th scope="col" style="text-align: center">Başlık</th>
+                    <th scope="col" style="text-align: center">Detay</th>
+                    <th scope="col" style="text-align: center">Tarih</th>
+                    <th scope="col" style="text-align: center">İşlem</th>
+
+                </tr>
+                </thead>
+                <tbody id="annRow">
+                <tr>
+                    <td style="text-align: center">Aktif</td>
+                    <td style="text-align: center">İndirim!</td>
+                    <td style="text-align: center">Bütün ürünler de %5 indirim!</td>
+                    <td style="text-align: center">13.10.2021</td>
+                    <td style="text-align: center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
+                           <a href="/announcement/edit"><button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button> </a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="row" >
+        <div class="col-sm-5" >
+            <div>1/1</div>
+        </div>
+
+        <div class="col-sm-7">
+            <div style="float: right">
+                <button type="button" class="btn btn-light"> İlk </button>
+                <button type="button" class="btn btn-light"> <<< </button>
+                <button type="button" class="btn btn-light"> >>> </button>
+                <button type="button" class="btn btn-light"> Son </button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+</th:block>
+</body>
+</html>

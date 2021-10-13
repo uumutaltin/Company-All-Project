@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Duyuru Ekleme</div>
+
+                <form class="row p-3" id="announcement_add_form">
+
+                    <div class="col-md-1 mb-3">
+
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <input type="text" name="atitle" id="atitle" class="form-control" placeholder="Duyuru Başlığını Giriniz" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
+
+                    <div class="col-md-1 mb-3 ">
+
+                    </div>
+                    <div class="col-md-10 mb-3">
+
+                        <textarea id="editor" name="editor"></textarea>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
+
+                    <div class="col-sm-1"></div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-1">
+                        <div class="btn-group col-md-3" role="group">
+                            <button type="submit" class="btn btn-info mr-1">Ekle</button>
+                            <button  class="btn btn-danger">İptal</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="col-sm-2"></div>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script th:src="@{/js/ck5editor.js}"></script>
+</th:block>
+
+</body>
+</html>
