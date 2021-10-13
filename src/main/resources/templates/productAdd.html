@@ -1,0 +1,169 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Ekleme</title>
+
+
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Ürün Ekleme</div>
+                <p style="text-align: center;margin-top: 15px;color: black">Ürün Bilgilerinizi Giriniz.</p>
+                <form class="row p-3" id="customer_add_form">
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcategory" class="form-label" style="color: black"><b>Ürün Kategori Seçiniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select data-placeholder="Kategori Ara" multiple class="chosen-select col-md-12" name="pcategory" id="pcategory"  onchange="changed()">
+                            <option value=""></option>
+                            <option>Elektronik</option>
+                            <option>Telefon</option>
+                            <option>Tablet</option>
+                            <option>Bilgisayar</option>
+                            <option>Giyim</option>
+                            <option>Tekstil</option>
+                            <option>Oyuncak</option>
+                            <option>Puzzle</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pname" class="form-label" style="color: black"><b>Ürün Adını Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="pname" id="pname" class="form-control" required placeholder="Ürün Adı"/>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="psdetail" class="form-label" style="color: black"><b>Kısa Açıklama Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="psdetail" id="psdetail" class="form-control" required placeholder="Ürün Kısa Açıklama"/>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pdetail" class="form-label" style="color: black"><b>Ürün Açıklamasını Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <textarea name="pdetail" id="pdetail" cols="30" rows="5"  class="form-control" required placeholder="Ürün Açıklamasını Giriniz"></textarea>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pprice" class="form-label" style="color: black"><b>Ürün Fiyatını Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="pprice" id="pprice" class="form-control" required placeholder="Ürün Fiyat"/>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="ptype" class="form-label" style="color: black"><b>Ürün Tipini Seçiniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="ptype" id="ptype">
+                            <option value="0" >Ürün Tipini Seçiniz</option>
+                            <option value="1">Kiralık</option>
+                            <option value="2">Satılık</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcampaign" class="form-label" style="color: black"><b>Kampanya var mı ?</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="pcampaign" id="pcampaign">
+                            <option value="0" >Seçiniz</option>
+                            <option value="1">Evet</option>
+                            <option value="2">Hayır</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcampaignname" class="form-label" style="color: black"><b>Kampanya Adı</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="pcampaignname" id="pcampaignname" class="form-control" required placeholder="Kampanya Adı"/>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcampaigndetail" class="form-label" style="color: black"><b>Kampanya Detayını Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <textarea name="pcampaigndetail" id="pcampaigndetail" cols="30" rows="5"  class="form-control" required placeholder="Kampanya Detayını Giriniz"></textarea>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="padress" class="form-label" style="color: black"><b>Adresi:</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <textarea name="padress" id="padress" cols="30" rows="5"  class="form-control" required></textarea>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="platitude" class="form-label" style="color: black"><b>Enlem:</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="platitude" id="platitude" class="form-control" required />
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="plongitude" class="form-label" style="color: black"><b>Boylam:</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="plongitude" id="plongitude" class="form-control" required />
+                    </div>
+                    <div class="col-md-1"></div>
+
+
+
+                    <div class="col-sm-1"></div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-1">
+                        <div class="btn-group col-md-3" role="group">
+                            <button type="submit" class="btn btn-info mr-1">Ekle</button>
+                            <button  class="btn btn-danger">İptal</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <script th:src="@{/js/products.js}"></script>
+</th:block>
+</body>
+</html>

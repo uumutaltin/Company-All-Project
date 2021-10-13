@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Kategorisi Ekle</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Ürün Kategori Ekle</div>
+                <p style="text-align: center;margin-top: 15px;color: black">Ürün Kategori Bilgilerinizi Giriniz.</p>
+                <form class="row p-3" id="customer_add_form">
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcategory" class="form-label" style="color: black"><b>Üst Kategori Seçiniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="pcategory" id="pcategory">
+                            <option value="0" >Kategori Seçiniz</option>
+                            <option value="1">Elektronik</option>
+                            <option value="2">&nbsp;&nbsp;&nbsp;Telefon</option>
+                            <option value="2">&nbsp;&nbsp;&nbsp;Bilgisayar</option>
+                            <option value="1">Bilgisayar</option>
+                            <option value="2">&nbsp;&nbsp;&nbsp;Tablet</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="pcategoryname" class="form-label" style="color: black"><b>Kategori Adını Giriniz</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="pcategoryname" id="pcategoryname" class="form-control" required placeholder="Kategori Adı Giriniz" />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-3">
+                        <div class="btn-group col-md-3" role="group">
+                            <button type="submit" class="btn btn-info mr-1">Ekle</button>
+                            <button type="submit" class="btn btn-info mr-1">Düzenle</button>
+                      <!--      <button  class="btn btn-danger">İptal</button>-->
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 text-right" style="margin-left: 20px;">
+                        <div class="btn-group col-md-12" role="group">
+                            <button  class="btn btn-danger">Kategori Sil</button>
+                        </div>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-1"></div>
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+
+</th:block>
+</body>
+</html>
