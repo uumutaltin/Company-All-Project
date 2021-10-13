@@ -1,0 +1,83 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Anket Detay</div>
+
+                <form class="row p-3" id="survey_detail_form">
+
+                    <div class="col-md-2 mb-3"></div>
+                    <div class="col-md-8 mb-3">
+                        <div class="table-responsive">
+                            <h4 style="text-align: center">Anket baslık</h4>
+                            <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col" style="text-align: center">Seçenek</th>
+                                    <th scope="col" style="text-align: center">Aldığı Oy Sayısı</th>
+                                    <th scope="col" style="text-align: center">İşlem</th>
+
+                                </tr>
+                                </thead>
+                                <tbody id="surveyDetailRow">
+                                <tr>
+                                    <td style="text-align: center">İyi</td>
+                                    <td style="text-align: center">0</td>
+                                    <td style="text-align: center">
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                            <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center">Kötü</td>
+                                    <td style="text-align: center">0</td>
+                                    <td style="text-align: center">
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                            <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                    <div class="col-sm-3"></div>
+
+                    <div class="col-md-6" >
+                        <button type="submit" class="btn btn-danger mr-1">Anket Sil</button>
+                        <a href="/survey/edit"> <button type="button" class="btn btn-info mr-1">Anket Düzenle</button> </a>
+                        <a href="/survey/option"> <button type="button" class="btn btn-primary mr-1">Seçenek Ekle</button></a>
+                    </div>
+                    <div class="col-sm-3"></div>
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-sm-3"></div>
+
+
+    </div>
+
+
+</th:block>
+</body>
+</html>
