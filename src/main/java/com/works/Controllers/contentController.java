@@ -18,6 +18,11 @@ public class contentController {
         return "contentsAdd";
     }
 
+    @GetMapping("/edit")
+    public String contentUpdate(){
+        return "contentsEdit";
+    }
+
 
 
 }
