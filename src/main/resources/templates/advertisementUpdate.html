@@ -1,0 +1,86 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Advertisement Update</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Reklam Düzenleme</div>
+                <form class="row p-3" id="customer_add_form">
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="ctitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="ctitle" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+
+
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="advertımage" class="form-label" style="color: black"><b>Reklam Resmi</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="file" name="cname" id="advertımage" class="form-control" required />
+                    </div>
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="advertwidth" class="form-label" style="color: black"><b>Reklam Genişlik</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="advertwidth" class="form-control" required />
+                    </div>
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="advertheight" class="form-label" style="color: black"><b>Reklam Yükseklik</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="advertheight" class="form-control" required />
+                    </div>
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="advertlink" class="form-label" style="color: black"><b>Reklam Link</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <input type="text" name="cname" id="advertlink" class="form-control" required />
+                    </div>
+                    <div class="col-md-3 mb-3 text-center">
+                        <label for="cstatus" class="form-label" style="color: black"><b>Reklam Durum</b></label>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <select class="form-select" name="cstatus" id="cstatus">
+                            <option value="0" >Pasif</option>
+                            <option value="1">Aktif</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-1"></div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-1">
+                        <div class="btn-group col-md-3" role="group">
+                            <button type="submit" class="btn btn-info mr-1">Kaydet</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+
+</th:block>
+</body>
+</html>

@@ -17,4 +17,9 @@ public class advertisementController {
     public String advertisementAdd(){
         return "advertisementAdd";
     }
+
+    @GetMapping("/update")
+    public String advertisementUpdate(){
+        return "advertisementUpdate";
+    }
 }
