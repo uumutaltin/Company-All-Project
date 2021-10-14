@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Kayıt Sayfası</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <div class="col-sm-12">
+
+
+            <form th:action="@{/login}" method="post">
+                <section class="vh-100">
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex align-items-center justify-content-center h-100">
+                            <div class="col-md-8 col-lg-7 col-xl-6">
+                                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
+                            </div>
+                            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                                <form>
+                                    <div th:if="${param.error}">
+                                        <span style="color: red"><b>Kullanıcı Adı veya Şifre Hatalıdır!</b></span>
+                                    </div>
+                                    <h5>Şirket Admin Bilgileri</h5>
+                                    <div class="form-outline mb-3">
+                                        <input type="email" id="companyname" name="companyname" class="form-control form-control-lg" placeholder="Şirket Adınız..." />
+
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <input type="email" id="adress" name="adress" class="form-control form-control-lg"  placeholder="Şirket Adresi..." />
+
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <select class="form-select" name="sector" id="sector">
+                                            <option value="1">Adalet ve Güvenlik</option>
+                                            <option value="2">Ağaç İşleri, Kağıt ve Kağıt Ürünleri</option>
+                                            <option value="3">Bilişim Teknolojileri</option>
+                                            <option value="4">Cam, Çimento ve Toprak</option>
+                                            <option value="5">Elektrik, Elektronik</option>
+                                            <option value="6">Emlak</option>
+                                            <option value="7">Enerji</option>
+                                            <option value="8">Eğitim</option>
+                                            <option value="9">Finans</option>
+                                            <option value="10">Gıda</option>
+                                            <option value="11">Kimya, Petrol, Lastik ve Plastik</option>
+                                            <option value="12">Kültür, Sanat</option>
+                                            <option value="13">Maden</option>
+                                            <option value="14">Medya, İletişim ve Yayıncılık</option>
+                                            <option value="15">Metal</option>
+                                            <option value="16">Mobilya</option>
+                                            <option value="17">Otomotiv</option>
+                                            <option value="18">Sağlık ve Sosyal Hizmetler</option>
+                                            <option value="19">Tarım, Avcılık, Balıkçılık</option>
+                                            <option value="20">Teknoloji</option>
+                                            <option value="21">Tekstil, Hazır Giyim, Deri</option>
+                                            <option value="22">Ticaret (Satış ve Pazarlama)</option>
+                                            <option value="23">Toplumsal ve Kişisel Hizmetler</option>
+                                            <option value="24">Turizm, Konaklama, Yiyecek-İçecek Hizmetleri</option>
+                                            <option value="25">Ulaştırma, Lojistik ve Haberleşme</option>
+                                            <option value="26">Çevre</option>
+                                            <option value="27">İnşaat</option>
+                                            <option value="29">İş ve Yönetim</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <input type="email" id="phone" name="phone" class="form-control form-control-lg" placeholder="Şirket GSM..."/>
+                                    </div>
+
+                                    <h5>Şirket Admin Bilgileri</h5>
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Yetkili Adı..."/>
+
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="surname" name="surname" class="form-control form-control-lg" placeholder="Yetkili Soyadı..." />
+
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="email" id="mail" name="mail" class="form-control form-control-lg" placeholder="Yetkili Mail Adresi..."/>
+
+                                    </div>
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-3">
+                                        <input type="password" id="password" name="password" class="form-control form-control-lg"  placeholder="Şifre..."/>
+
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <input type="password" id="repassword" name="repassword" class="form-control form-control-lg" placeholder="Şifrenizi Tekrar Giriniz" />
+
+                                    </div>
+
+
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydol</button>
+                                </form>
+                                <p>Hesabınız var mı ? kayıt olmak için <a href="/login">Buraya Tıklayınız</a></p>
+                                <p>Ana sayfaya gitmek için <a href="/firstPage">Tıklayınız</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </form>
+        </div>
+    </div>
+</th:block>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

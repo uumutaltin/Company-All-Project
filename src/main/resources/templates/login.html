@@ -5,7 +5,7 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Giriş Sayfası</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -27,15 +27,15 @@
                   </div>
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form1Example13">Email Adresi</label>
-                    <input type="email" id="form1Example13" name="username" class="form-control form-control-lg" />
+                    <label class="form-label" for="useremail">Email Adresi</label>
+                    <input type="email" id="useremail" name="useremail" class="form-control form-control-lg" />
 
                   </div>
 
                   <!-- Password input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form1Example23">Şifre</label>
-                    <input type="password" id="form1Example23" name="password" class="form-control form-control-lg" />
+                    <label class="form-label" for="userpassword">Şifre</label>
+                    <input type="password" id="userpassword" name="userpassword" class="form-control form-control-lg" />
 
                   </div>
 
@@ -45,6 +45,8 @@
                   <button type="submit" class="btn btn-primary btn-lg btn-block">Giriş</button>
 
                 </form>
+                <p>Hesabınız yok mu ? kayıt olmak için <a href="/register">Buraya Tıklayınız</a></p>
+                <p>Ana sayfaya gitmek için <a href="/firstPage">Tıklayınız</a></p>
               </div>
             </div>
           </div>
