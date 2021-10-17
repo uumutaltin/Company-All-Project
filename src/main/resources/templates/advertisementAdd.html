@@ -17,22 +17,24 @@
       <div class="main-card mb-3 card mainCart">
         <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Reklam Ekleme</div>
         <p style="text-align: center;margin-top: 15px;color: black">Reklam Bilgilerinizi Giriniz.</p>
-        <form class="row p-3" id="customer_add_form">
+        <form class="row p-3" id="advertisement_add_form" method="post"  action="/advertisement/advertAdd" th:object="${advertisement}" enctype="multipart/form-data">
 
           <div class="col-md-3 mb-3 text-center">
-            <label for="ctitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
+            <label for="atitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="ctitle" class="form-control" required />
+            <input type="text" name="atitle" id="atitle" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('atitle') }" th:errors="*{atitle}"></div>
           </div>
 
           <div class="col-md-1"></div>
 
           <div class="col-md-3 mb-3 text-center">
-            <label for="cdesc" class="form-label" style="color: black"><b>Gösterim Sayısı</b></label>
+            <label for="adesc" class="form-label" style="color: black"><b>Gösterim Sayısı</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="number" name="cname" id="cdesc" class="form-control" required />
+            <input type="number" name="adesc" id="adesc" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('adesc') }" th:errors="*{adesc}"></div>
           </div>
 
           <div class="col-md-1"></div>
@@ -41,37 +43,46 @@
             <label for="datestart" class="form-label" style="color: black"><b>Başlangıç Tarihi</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="date" name="cname" id="datestart" class="form-control" required />
+            <input type="date" name="datestart" id="datestart" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('datestart') }" th:errors="*{datestart}"></div>
           </div>
           <div class="col-md-3 mb-3 text-center">
             <label for="dateend" class="form-label" style="color: black"><b>Bitiş Tarihi</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="date" name="cname" id="dateend" class="form-control" required />
+            <input type="date" name="dateend" id="dateend" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('dateend') }" th:errors="*{dateend}"></div>
+
           </div>
           <div class="col-md-3 mb-3 text-center">
-            <label for="advertımage" class="form-label" style="color: black"><b>Reklam Görseli</b></label>
+            <label for="advertimage_file" class="form-label" style="color: black"><b>Reklam Görseli</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="file" name="cname" id="advertımage" class="form-control" required />
+            <input type="file" name="advertimage_file" id="advertimage_file" class="form-control" />
           </div>
           <div class="col-md-3 mb-3 text-center">
             <label for="advertwidth" class="form-label" style="color: black"><b>Reklam Genişlik</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="advertwidth" class="form-control" required />
+            <input type="text" name="advertwidth" id="advertwidth" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('advertwidth') }" th:errors="*{advertwidth}"></div>
+
           </div>
           <div class="col-md-3 mb-3 text-center">
             <label for="advertheight" class="form-label" style="color: black"><b>Reklam Yükseklik</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="advertheight" class="form-control" required />
+            <input type="text" name="advertheight" id="advertheight" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('advertheight') }" th:errors="*{advertheight}"></div>
+
           </div>
           <div class="col-md-3 mb-3 text-center">
             <label for="advertlink" class="form-label" style="color: black"><b>Reklam Link</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="advertlink" class="form-control" required />
+            <input type="text" name="advertlink" id="advertlink" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('advertlink') }" th:errors="*{advertlink}"></div>
+
           </div>
 
           <div class="col-md-1"></div>

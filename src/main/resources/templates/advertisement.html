@@ -36,7 +36,7 @@
 
           <div class="col-sm-2">
 
-            <select class="form-select" name="cPage" id="cPage">
+            <select onchange="allAd()" class="form-select" name="cPage" id="cPage">
               <option value="5" >5</option>
               <option value="10">10</option>
               <option value="25">25</option>
@@ -54,7 +54,7 @@
       <div class="col-sm-3">
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-          <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+          <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
           <button id="contentSearch" class="btn btn-outline-primary">Ara</button>
         </div>
       </div>
@@ -83,25 +83,8 @@
 
         </tr>
         </thead>
-        <tbody id="contentRow">
-        <tr>
-          <td>Reklam</td>
-          <td>Gösterim</td>
-          <td>Tıklanma</td>
-          <td>Başlangıç</td>
-          <td>Bitiş</td>
-          <td>Resim</td>
-          <td>Genişlik</td>
-          <td>Yükseklik</td>
-          <td>Link</td>
-          <td>Durum</td>
-          <td >
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-               <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-              <a href="/advertisement/update"><button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button></a>
-            </div>
-          </td>
-        </tr>
+        <tbody id="adRow">
+
         </tbody>
       </table>
     </div>
@@ -109,20 +92,26 @@
   </div>
   <div class="row" >
     <div class="col-sm-5" >
-      <div>1/1</div>
+      <div><label id="totalPageNumber"></label></div>
     </div>
 
     <div class="col-sm-7">
       <div style="float: right">
-        <button type="button" class="btn btn-light"> İlk </button>
-        <button type="button" class="btn btn-light"> <<< </button>
-        <button type="button" class="btn btn-light"> >>> </button>
-        <button type="button" class="btn btn-light"> Son </button>
+        <button type="button" onclick="changeVariables(0)" class="btn btn-light"> İlk </button>
+        <button onclick="pageMinus()" type="button" class="btn btn-light"> <<< </button>
+        <button id="btnPlus" onclick="pagePlus()" type="button" class="btn btn-light"> >>> </button>
+        <button type="button"  onclick="changeVariables(-5)" class="btn btn-light"> Son </button>
       </div>
 
     </div>
   </div>
 
 </th:block>
+
+<th:block layout:fragment="script">
+
+  <script th:src="@{/js/advertisement.js}"></script>
+</th:block>
+
 </body>
 </html>
