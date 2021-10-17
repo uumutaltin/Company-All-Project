@@ -16,54 +16,52 @@
 
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Reklam Düzenleme</div>
-                <form class="row p-3" id="customer_add_form">
+                <form class="row p-3" id="advertisement_update_form" th:action="@{'/advertisement/advertUpdate/' + ${advertisementUpdate.getRaid()}}" method="post" th:object="${advertisementUpdate}" enctype="multipart/form-data">
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="ctitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
+                        <label for="atitle" class="form-label" style="color: black"><b>Reklam Adı</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="ctitle" class="form-control" required />
+                        <input th:value="${advertisementUpdate.atitle}" type="text" name="atitle" id="atitle" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('atitle') }" th:errors="*{atitle}"></div>
                     </div>
 
                     <div class="col-md-1"></div>
-
-
-
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="advertımage" class="form-label" style="color: black"><b>Reklam Resmi</b></label>
+                        <label for="advertimage_file" class="form-label" style="color: black"><b>Reklam Resmi</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="file" name="cname" id="advertımage" class="form-control" required />
+                        <input th:value="${advertisementUpdate.advertimage}" type="file" name="advertimage_file" id="advertimage_file" class="form-control"  />
                     </div>
                     <div class="col-md-3 mb-3 text-center">
                         <label for="advertwidth" class="form-label" style="color: black"><b>Reklam Genişlik</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="advertwidth" class="form-control" required />
+                        <input th:value="${advertisementUpdate.advertwidth}" type="text" name="advertwidth" id="advertwidth" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('advertwidth') }" th:errors="*{advertwidth}"></div>
                     </div>
                     <div class="col-md-3 mb-3 text-center">
                         <label for="advertheight" class="form-label" style="color: black"><b>Reklam Yükseklik</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="advertheight" class="form-control" required />
+                        <input th:value="${advertisementUpdate.advertheight}" type="text" name="advertheight" id="advertheight" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('advertheight') }" th:errors="*{advertheight}"></div>
                     </div>
                     <div class="col-md-3 mb-3 text-center">
                         <label for="advertlink" class="form-label" style="color: black"><b>Reklam Link</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="advertlink" class="form-control" required />
+                        <input th:value="${advertisementUpdate.advertlink}" type="text" name="advertlink" id="advertlink" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('advertlink') }" th:errors="*{advertlink}"></div>
                     </div>
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="cstatus" class="form-label" style="color: black"><b>Reklam Durum</b></label>
+                        <label for="astatus" class="form-label" style="color: black"><b>Reklam Durum</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <select class="form-select" name="cstatus" id="cstatus">
-                            <option value="0" >Pasif</option>
-                            <option value="1">Aktif</option>
-
+                        <select class="form-select" name="astatus" id="astatus">
+                            <option th:selected="(${advertisementUpdate.astatus } == false)" value="false">Pasif</option>
+                            <option th:selected="(${advertisementUpdate.astatus } == true)" value="true">Aktif</option>
                         </select>
                     </div>
-
-
                     <div class="col-md-1"></div>
                     <div class="col-sm-1"></div>
                     <div class="col-md-8"></div>
@@ -77,10 +75,7 @@
             </div>
         </div>
         <div class="col-sm-2"></div>
-
-
     </div>
-
 </th:block>
 </body>
 </html>

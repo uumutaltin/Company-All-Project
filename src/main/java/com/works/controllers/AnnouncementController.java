@@ -1,4 +1,4 @@
-package com.works.Controllers;
+package com.works.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,5 +23,6 @@ public class AnnouncementController {
     public String announcementEdit(){
         return "announcementEdit";
     }
+
 
 }
