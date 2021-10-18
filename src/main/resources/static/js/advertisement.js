@@ -42,13 +42,14 @@ function createRow( data ) {
     let html = ``
     for (let i = 0; i < data.length; i++) {
         const itm = data [i];
+
         const status = itm.astatus == 1? 'Aktif' : 'Pasif';
         html += `<tr>
           <td>`+itm.atitle +`</td>
           <td>`+itm.adesc +`</td>
           <td>`+itm.adesc +`</td>
-          <td>`+itm.datestart +`</td>
-          <td>`+itm.dateend +`</td>
+          <td>`+dateformat(itm.datestart) +`</td>
+          <td>`+dateformat(itm.dateend) +`</td>
           <td><a target="_blank" href="http://localhost:8090/uploads/advertisement/`+itm.advertimage +`"><img style="width: 100px; height: 100px;" src="../uploads/advertisement/`+itm.advertimage +`"> </img></a></td>
           <td>`+itm.advertwidth +`</td>
           <td>`+itm.advertheight +`</td>
@@ -185,4 +186,23 @@ function pageCount(countStatus){
             console.log(err)
         }
     })
+}
+function dateformat(dataDate){
+    dataDate = dataDate.substring(0,dataDate.indexOf('+'));
+    dateData = dataDate+'Z';
+    console.log(dateData);
+    date = new Date(dateData);
+    year = date.getFullYear();
+    month = date.getMonth()+1;
+    dt = date.getDate();
+
+    if (dt < 10) {
+        dt = '0' + dt;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    finalDate = year+'-' + month + '-'+dt
+    console.log(finalDate);
+    return finalDate;
 }
