@@ -17,22 +17,26 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">İçerik Ekleme</div>
                 <p style="text-align: center;margin-top: 15px;color: black">İçerik bilgilerinizi aşağıda girebilirsiniz.</p>
-                <form class="row p-3" id="customer_add_form">
+                <form method="post" class="row p-3" id="contents_add_form"  action="/contents/contentsAdd" th:object="${contents}">
 
                     <div class="col-md-3 mb-3 text-center">
                         <label for="ctitle" class="form-label" style="color: black"><b>İçerik Başlık</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="ctitle" class="form-control" required />
+                        <input type="text" name="ctitle" id="ctitle" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('ctitle') }" th:errors="*{ctitle}"></div>
+
                     </div>
 
                     <div class="col-md-1"></div>
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="cdesc" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
+                        <label for="cdescription" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="cname" id="cdesc" class="form-control" required />
+                        <input type="text" name="cdescription" id="cdescription" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('cdescription') }" th:errors="*{cdescription}"></div>
+
                     </div>
 
                     <div class="col-md-1"></div>
@@ -42,7 +46,9 @@
                     </div>
                     <div class="col-md-8 mb-3">
                         <!--<input type="text" name="cname" id="cdetail" class="form-control" required />-->
-                        <textarea id="editor" name="editor"></textarea>
+                        <textarea id="editor" name="cdetail"></textarea>
+                        <div style="color:red;" th:if="${ #fields.hasErrors('cdetail') }" th:errors="*{cdetail}"></div>
+
                     </div>
 
                     <div class="col-md-1"></div>
