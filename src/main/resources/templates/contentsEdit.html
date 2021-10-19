@@ -17,22 +17,25 @@
       <div class="main-card mb-3 card mainCart">
         <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">İçerik Düzenleme</div>
         <p style="text-align: center;margin-top: 15px;color: black">İçerik bilgilerinizi aşağıda düzenleyebilirsiniz.</p>
-        <form class="row p-3" id="customer_update_form">
+        <form class="row p-3" id="contents_update_form" th:action="@{'/contents/contentUpdate/' +${contentUpdate.getRcid()}  }" method="post" th:object="${contentUpdate}">
 
           <div class="col-md-3 mb-3 text-center">
             <label for="ctitle" class="form-label" style="color: black"><b>İçerik Başlık</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="ctitle" class="form-control" required />
+            <input th:value="${contentUpdate.ctitle}" type="text" name="ctitle" id="ctitle" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('ctitle') }" th:errors="*{ctitle}"></div>
           </div>
 
           <div class="col-md-1"></div>
 
           <div class="col-md-3 mb-3 text-center">
-            <label for="cdesc" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
+            <label for="cdescription" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <input type="text" name="cname" id="cdesc" class="form-control" required />
+            <input th:value="${contentUpdate.cdescription}" type="text" name="cdescription" id="cdescription" class="form-control" required />
+            <div style="color:red;" th:if="${ #fields.hasErrors('cdescription') }" th:errors="*{cdescription}"></div>
+
           </div>
 
           <div class="col-md-1"></div>
@@ -41,7 +44,8 @@
             <label  class="form-label" style="color: black"><b>Detaylı Açıklama</b></label>
           </div>
           <div class="col-md-8 mb-3">
-            <textarea id="editor" name="editor"></textarea>
+            <textarea th:text="${contentUpdate.cdetail}" id="editor" name="cdetail"></textarea>
+            <div style="color:red;" th:if="${ #fields.hasErrors('cdetail') }" th:errors="*{cdetail}"></div>
           </div>
 
           <div class="col-md-1"></div>
@@ -52,8 +56,8 @@
           </div>
           <div class="col-md-8 mb-3">
             <select class="form-select" name="cstatus" id="cstatus">
-              <option value="0" >Pasif</option>
-              <option value="1">Aktif</option>
+              <option th:selected="(${contentUpdate.cstatus} == false)" value="0" >Pasif</option>
+              <option th:selected="(${contentUpdate.cstatus} == true)" value="1">Aktif</option>
 
             </select>
           </div>

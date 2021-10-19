@@ -157,7 +157,6 @@ public class AdvertisementController {
             Slice<AdvertisementRedis> pageList = arRepo.findByOrderByAidDesc(pageable);
             List<AdvertisementRedis> ls = pageList.getContent();
             List<Advertisement> adList =aRepo.findAll();
-            System.out.println(ls);
             eaRepo.deleteAll();
 
             for(Advertisement item : adList){
@@ -173,17 +172,7 @@ public class AdvertisementController {
                 elasticAdvertisement.setAdvertlink(item.getAdvertlink());
                 elasticAdvertisement.setAstatus(item.getAstatus());
 
-                System.out.println(elasticAdvertisement.getAtitle());
-                System.out.println(elasticAdvertisement.getAdvertimage());
-                System.out.println(elasticAdvertisement.getAdvertheight());
-                System.out.println(elasticAdvertisement.getAdvertlink());
-                System.out.println(elasticAdvertisement.getAdvertwidth());
-                System.out.println(elasticAdvertisement.getAdesc());
-                System.out.println(elasticAdvertisement.getAeid());
-                System.out.println(elasticAdvertisement.getAstatus());
-                System.out.println(elasticAdvertisement.getAid());
-                System.out.println(elasticAdvertisement.getDateend());
-                System.out.println(elasticAdvertisement.getDatestart());
+
                 eaRepo.save(elasticAdvertisement);
             }
             return ls;
@@ -297,7 +286,7 @@ public class AdvertisementController {
 
 
         } catch (Exception e) {
-            System.err.println("");
+            System.err.println("Advertisement Update Error : " + e);
         }
         return "redirect:/advertisement/update/"+straid;
 
