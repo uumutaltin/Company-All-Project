@@ -17,19 +17,13 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Ürün Kategori Ekle</div>
                 <p style="text-align: center;margin-top: 15px;color: black">Ürün Kategori Bilgilerinizi Giriniz.</p>
-                <form class="row p-3" id="customer_add_form">
+                <form class="row p-3" id="customer_add_form" action="/products/category/add" method="post" th:object="${productCategory}">
 
                     <div class="col-md-3 mb-3 text-center">
                         <label for="pcategory" class="form-label" style="color: black"><b>Üst Kategori Seçiniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <select class="form-select" name="pcategory" id="pcategory">
-                            <option value="0" >Kategori Seçiniz</option>
-                            <option value="1">Elektronik</option>
-                            <option value="2">&nbsp;&nbsp;&nbsp;Telefon</option>
-                            <option value="2">&nbsp;&nbsp;&nbsp;Bilgisayar</option>
-                            <option value="1">Bilgisayar</option>
-                            <option value="2">&nbsp;&nbsp;&nbsp;Tablet</option>
+                        <select name="pcategory" id="pcategory" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
 
                         </select>
                     </div>
@@ -41,6 +35,7 @@
                     </div>
                     <div class="col-md-8 mb-3">
                         <input type="text" name="pcategoryname" id="pcategoryname" class="form-control" required placeholder="Kategori Adı Giriniz" />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('pcategoryname') }" th:errors="*{pcategoryname}"></div>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -57,7 +52,7 @@
 
                     <div class="col-md-3 text-right" style="margin-left: 20px;">
                         <div class="btn-group col-md-12" role="group">
-                            <button  class="btn btn-danger">Kategori Sil</button>
+                            <button type="button" onclick="fncDeleteProductCategory()" class="btn btn-danger">Kategori Sil</button>
                         </div>
                     </div>
                     <div class="col-md-8"></div>
@@ -73,6 +68,11 @@
 
     </div>
 
+</th:block>
+
+<th:block layout:fragment="script">
+
+    <script th:src="@{/js/productcategoryadd.js}"></script>
 </th:block>
 </body>
 </html>

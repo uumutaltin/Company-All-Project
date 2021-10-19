@@ -114,10 +114,7 @@ public class AdvertisementController {
             System.err.println("AdvertAdd Error : " + e);
         }
 
-
         return "advertisementAdd";
-
-
     }
 
     @ResponseBody
