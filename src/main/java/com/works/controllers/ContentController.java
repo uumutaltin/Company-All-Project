@@ -90,19 +90,23 @@ public class ContentController {
         return "contentsAdd";
     }
 
+
+    // for cStatus
+
     @ResponseBody
-    @GetMapping("/contentList/{pageNo}/{stpageSize}")
-    public List<ContentsRedis> contentsList(@PathVariable String pageNo, @PathVariable String stpageSize){
+    @GetMapping("/contentList/{pageNo}/{stpageSize}/{cStatus}")
+    public List<Contents> contentsListStatus(@PathVariable String pageNo, @PathVariable String stpageSize, @PathVariable String cStatus){
         int ipageNumber = Integer.parseInt(pageNo);
         int pageSize = Integer.parseInt(stpageSize);
+        int status = Integer.parseInt(cStatus);
 
-
+        if(status == 1) {
             if (pageSize == -1) {
-                List<ContentsRedis> lsx = new ArrayList<>();
-                Iterable<ContentsRedis> page = crRepo.findAll();
-                List<Contents> contentsList = cRepo.findAll();
+                List<Contents> lsx = new ArrayList<>();
+
+                List<Contents> contentsList = cRepo.findByCstatusIsTrueOrderByCidDesc();
                 ecRepo.deleteAll();
-                for (ContentsRedis item : page) {
+                for (Contents item : contentsList) {
                     lsx.add(item);
                 }
                 contentsList.forEach(item -> {
@@ -116,15 +120,13 @@ public class ContentController {
 
                     ecRepo.save(elasticContents);
                 });
-                Collections.reverse(lsx);
                 return lsx;
             } else {
                 Pageable pageable = PageRequest.of(ipageNumber, pageSize);
-                Slice<ContentsRedis> pageList = crRepo.findByOrderByCidDesc(pageable);
-                List<ContentsRedis> ls = pageList.getContent();
-                List<Contents> contentsList = cRepo.findAll();
+                List<Contents> ls = cRepo.findByCstatusIsTrue(pageable);
+
                 ecRepo.deleteAll();
-                for (Contents item : contentsList) {
+                for (Contents item : ls) {
                     ElasticContents elasticContents = new ElasticContents();
                     elasticContents.setCid(item.getCid());
                     elasticContents.setCtitle(item.getCtitle());
@@ -138,8 +140,104 @@ public class ContentController {
                 }
                 return ls;
             }
+        }
+        else {
+            if (pageSize == -1) {
+                List<Contents> lsx = new ArrayList<>();
+
+                List<Contents> contentsList = cRepo.findByCstatusIsFalseOrderByCidDesc();
+                ecRepo.deleteAll();
+                for (Contents item : contentsList) {
+                    lsx.add(item);
+                }
+                contentsList.forEach(item -> {
+                    ElasticContents elasticContents = new ElasticContents();
+                    elasticContents.setCid(item.getCid());
+                    elasticContents.setCtitle(item.getCtitle());
+                    elasticContents.setCdescription(item.getCdescription());
+                    elasticContents.setCdetail(item.getCdetail());
+                    elasticContents.setCstatus(item.getCstatus());
+                    elasticContents.setCdate(item.getCdate());
+
+                    ecRepo.save(elasticContents);
+                });
+                return lsx;
+            } else {
+                Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+                List<Contents> ls = cRepo.findByCstatusIsFalse(pageable);
+
+                ecRepo.deleteAll();
+                for (Contents item : ls) {
+                    ElasticContents elasticContents = new ElasticContents();
+                    elasticContents.setCid(item.getCid());
+                    elasticContents.setCtitle(item.getCtitle());
+                    elasticContents.setCdescription(item.getCdescription());
+                    elasticContents.setCdetail(item.getCdetail());
+                    elasticContents.setCstatus(item.getCstatus());
+                    elasticContents.setCdate(item.getCdate());
+
+                    ecRepo.save(elasticContents);
+
+                }
+                return ls;
+            }
+        }
+
+    }
+    // for cStatus
 
 
+
+
+
+    @ResponseBody
+    @GetMapping("/contentList/{pageNo}/{stpageSize}")
+    public List<ContentsRedis> contentsList(@PathVariable String pageNo, @PathVariable String stpageSize){
+        int ipageNumber = Integer.parseInt(pageNo);
+        int pageSize = Integer.parseInt(stpageSize);
+
+
+        if (pageSize == -1) {
+            List<ContentsRedis> lsx = new ArrayList<>();
+            Iterable<ContentsRedis> page = crRepo.findAll();
+            List<Contents> contentsList = cRepo.findAll();
+            ecRepo.deleteAll();
+            for (ContentsRedis item : page) {
+                lsx.add(item);
+            }
+            contentsList.forEach(item -> {
+                ElasticContents elasticContents = new ElasticContents();
+                elasticContents.setCid(item.getCid());
+                elasticContents.setCtitle(item.getCtitle());
+                elasticContents.setCdescription(item.getCdescription());
+                elasticContents.setCdetail(item.getCdetail());
+                elasticContents.setCstatus(item.getCstatus());
+                elasticContents.setCdate(item.getCdate());
+
+                ecRepo.save(elasticContents);
+            });
+            Collections.reverse(lsx);
+            return lsx;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<ContentsRedis> pageList = crRepo.findByOrderByCidDesc(pageable);
+            List<ContentsRedis> ls = pageList.getContent();
+            List<Contents> contentsList = cRepo.findAll();
+            ecRepo.deleteAll();
+            for (Contents item : contentsList) {
+                ElasticContents elasticContents = new ElasticContents();
+                elasticContents.setCid(item.getCid());
+                elasticContents.setCtitle(item.getCtitle());
+                elasticContents.setCdescription(item.getCdescription());
+                elasticContents.setCdetail(item.getCdetail());
+                elasticContents.setCstatus(item.getCstatus());
+                elasticContents.setCdate(item.getCdate());
+
+                ecRepo.save(elasticContents);
+
+            }
+            return ls;
+        }
 
 
     }

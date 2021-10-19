@@ -211,24 +211,28 @@ function pageCount(countStatus){
     })
 }
 
- /*function cstatusChange(){
-    alert("onchangeeeee")
+function cstatusChange(){
+
     const pageSize = $("#cPage").val()
     const status = $("#cStatus").val()
-    $.ajax({
-        url: './contents/contentList/'+pageNumber+'/'+pageSize + '/'+status,
-        type: 'GET',
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            console.log(data)
-            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
-            lastPageNumber = data;
-        },
-        error: function (err){
-            console.log(err)
-        }
-    })
+    if(status == 0){
+        allContent()
+    }else {
 
+        $.ajax({
+            url: './contents/contentList/'+pageNumber+'/'+pageSize + '/'+status,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
 
-}*/
+    }
+
+}
 
