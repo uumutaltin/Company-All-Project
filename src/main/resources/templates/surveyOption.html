@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Survey Option</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -17,7 +17,7 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Seçenek Ekleme</div>
 
-                <form class="row p-3" id="survey_option_form">
+                <form method="post" th:action="@{'/survey/detailAdd/'+${options.getSaid()}}" th:object="${options}" class="row p-3" id="survey_option_form">
 
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">

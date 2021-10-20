@@ -114,7 +114,10 @@ public class AdvertisementController {
             System.err.println("AdvertAdd Error : " + e);
         }
 
+
         return "advertisementAdd";
+
+
     }
 
     @ResponseBody
@@ -212,8 +215,6 @@ public class AdvertisementController {
 
     @PostMapping("/advertUpdate/{straid}")
     public String advertUpdate(@Valid @ModelAttribute("advertisementUpdate") AdvertisementRedis adRedisUpdate, @PathVariable String straid, BindingResult bindingResult, @RequestParam("advertimage_file") MultipartFile file) {
-
-        System.out.println("Update post girdi");
 
         AdvertisementRedis adRedis = arRepo.findById(straid).get();
 

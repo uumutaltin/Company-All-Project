@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Survey Edit</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -17,11 +17,12 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Anket Düzenleme</div>
 
-                <form class="row p-3" id="survey_edit_form">
+                <form class="row p-3" id="survey_edit_form" th:action="@{'/survey/surveyEdit/' + ${surveyEdit.getSaid()}}" method="post" th:object="${surveyEdit}">
 
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="sedit" id="sedit" class="form-control"  required />
+                        <input th:value="${surveyEdit.getStitle()}" type="text" name="stitle" id="stitle" class="form-control"  required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('stitle') }" th:errors="*{stitle}"></div>
                     </div>
 
                     <div class="col-md-2"></div>
@@ -30,19 +31,11 @@
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-info mr-1">Düzenle</button>
                     </div>
-
-
                 </form>
             </div>
-
-
         </div>
         <div class="col-sm-3"></div>
-
-
     </div>
-
-
 </th:block>
 </body>
 </html>

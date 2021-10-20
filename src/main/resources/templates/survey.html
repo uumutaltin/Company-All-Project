@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Survey</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -42,24 +42,16 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="cPage" id="cPage">
+                        <select onchange="allAd()" class="form-select" name="cPage" id="cPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="-1">Hepsi</option>
                         </select>
-
                     </div>
-
                     <div class="col-sm-7">
-
-
-
                     </div>
-
-
                 </div>
-
 
             </div>
             <div class="col-sm-2"></div>
@@ -67,7 +59,7 @@
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
                     <button id="contentSearch" class="btn btn-outline-primary">Ara</button>
                 </div>
             </div>
@@ -89,15 +81,7 @@
                 </tr>
                 </thead>
                 <tbody id="surveyRow">
-                <tr>
-                    <td style="text-align: center">Javayı nasıl buldunuz?</td>
-                    <td style="text-align: center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example" >
-                            <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
-                            <a href="/survey/detail"> <button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button> </a>
-                        </div>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -110,10 +94,10 @@
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+                <button type="button" onclick="changeVariables(0)" class="btn btn-light"> İlk </button>
+                <button onclick="pageMinus()" type="button" class="btn btn-light"> <<< </button>
+                <button id="btnPlus" onclick="pagePlus()" type="button" class="btn btn-light"> >>> </button>
+                <button type="button"  onclick="changeVariables(-5)" class="btn btn-light"> Son </button>
             </div>
 
 
@@ -124,6 +108,11 @@
 
 
 
+</th:block>
+
+<th:block layout:fragment="script">
+
+    <script th:src="@{/js/survey.js}"></script>
 </th:block>
 </body>
 </html>
