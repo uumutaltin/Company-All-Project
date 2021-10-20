@@ -17,11 +17,12 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Anket Ekleme</div>
 
-                <form class="row p-3" id="survey_add_form">
+                <form method="post" action="/survey/surveyAdd" th:object="${survey}" class="row p-3" id="survey_add_form">
 
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">
                         <input type="text" name="stitle" id="stitle" class="form-control" placeholder="Anket Başlığı Giriniz" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('stitle') }" th:errors="*{stitle}"></div>
                     </div>
 
                     <div class="col-md-2"></div>

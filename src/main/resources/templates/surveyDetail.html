@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Survey Detail</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -17,12 +17,12 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Anket Detay</div>
 
-                <form class="row p-3" id="survey_detail_form">
+                <form method="post" th:object="${surveyredis}" class="row p-3" id="survey_detail_form">
 
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">
                         <div class="table-responsive">
-                            <h4 style="text-align: center">Anket baslık</h4>
+                            <h4 th:text="${surveyredis.getStitle()}" style="text-align: center"></h4>
                             <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                 <thead>
                                 <tr>
@@ -33,25 +33,17 @@
                                 </tr>
                                 </thead>
                                 <tbody id="surveyDetailRow">
-                                <tr>
-                                    <td style="text-align: center">İyi</td>
-                                    <td style="text-align: center">0</td>
+
+                                <tr th:each="item, iter: ${surveyredis.getOptions()}">
+                                    <td th:text="${item.getSoption()}"  style="text-align: center"></td>
+                                    <td th:text="${item.getVoteNumber()}"  style="text-align: center"></td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                            <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+                                            <a th:href="@{'/survey/optionDelete/'+ ${surveyredis.getSaid()}+'/'+${iter.index}}"> <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button></a>
                                         </div>
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <td style="text-align: center">Kötü</td>
-                                    <td style="text-align: center">0</td>
-                                    <td style="text-align: center">
-                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                            <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -61,9 +53,9 @@
                     <div class="col-sm-3"></div>
 
                     <div class="col-md-6" >
-                        <button type="submit" class="btn btn-danger mr-1">Anket Sil</button>
-                        <a href="/survey/edit"> <button type="button" class="btn btn-info mr-1">Anket Düzenle</button> </a>
-                        <a href="/survey/option"> <button type="button" class="btn btn-primary mr-1">Seçenek Ekle</button></a>
+
+                        <a th:href="@{'/survey/edit/'+ ${surveyredis.getSaid()}}"> <button type="button" class="btn btn-info mr-1">Anket Düzenle</button> </a>
+                        <a th:href="@{'/survey/option/'+ ${surveyredis.getSaid()}}"> <button type="button" class="btn btn-primary mr-1">Seçenek Ekle</button></a>
                     </div>
                     <div class="col-sm-3"></div>
 
