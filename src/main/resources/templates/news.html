@@ -19,21 +19,19 @@
 
         <div class="col-sm-2">
             <select class="form-select" name="nStatus" id="nStatus">
-                <option value="0" >-- Hepsi</option>
+                <option value="-1" >-- Hepsi</option>
                 <option value="1">Aktif İçerikler</option>
-                <option value="2">Pasif İçerikler</option>
+                <option value="0">Pasif İçerikler</option>
             </select>
 
         </div>
         <div class="col-sm-4">
-            <select class="form-select" name="nAll" id="cAll">
-                <option value="0" >-- Bütün Kategoriler</option>
-                <option value="1">Elektronik</option>
-                <option value="2">Teknoloji</option>
+            <select name="ncAll" id="ncAll" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true" >
+
             </select>
         </div>
         <div class="col-sm-1" >
-            <input class="btn-sm btn-success" type="submit" name="yolla" value="SEÇ">
+            <input onclick="nFilterChange()" class="btn-sm btn-success" type="submit" name="yolla" value="SEÇ">
         </div>
 
 
@@ -55,7 +53,7 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="cPage" id="cPage">
+                        <select onchange="allNews()" class="form-select" name="cPage" id="cPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -80,7 +78,7 @@
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
                     <button id="contentSearch" class="btn btn-outline-primary">Ara</button>
                 </div>
             </div>
@@ -104,20 +102,9 @@
 
                 </tr>
                 </thead>
-                <tbody id="contentRow">
-                <tr>
-                    <td>Haber Deneme</td>
-                    <td>Kategori</td>
-                    <td>Aktif</td>
-                    <td>Resim</td>
-                    <td>13.10.2021</td>
-                    <td >
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                <tbody id="newsRow">
+
+
                 </tbody>
             </table>
         </div>
@@ -125,15 +112,15 @@
     </div>
     <div class="row" >
         <div class="col-sm-5" >
-            <div>1/1</div>
+            <div><label id="totalPageNumber"></label></div>
         </div>
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+                <button onclick="changeVariables(0)" type="button" class="btn btn-light"> İlk </button>
+                <button onclick="pageMinus()" type="button" class="btn btn-light"> <<< </button>
+                <button onclick="pagePlus()" type="button" class="btn btn-light"> >>> </button>
+                <button onclick="changeVariables(-5)" type="button" class="btn btn-light"> Son </button>
             </div>
 
 
@@ -144,5 +131,11 @@
 
 
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/news.js}"></script>
+</th:block>
+
+
 </body>
 </html>
