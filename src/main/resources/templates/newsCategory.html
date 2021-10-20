@@ -17,15 +17,14 @@
             <div class="main-card mb-3 card mainCart">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Kategori Ekleme</div>
 
-                <form class="row p-3" id="news_category_add_form">
+                <form method="post" class="row p-3" id="news_category_add_form" action="/news/category/add" th:object="${newsCategory}">
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="nstatus" class="form-label" style="color: black"><b>Kategoriler</b></label>
+                        <label for="nclist" class="form-label" style="color: black"><b>Kategoriler</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <select class="form-select" name="nstatus" id="nstatus">
-                            <option value="0" >Elektronik</option>
-                            <option value="1">Tekstil</option>
+                        <select name="nclist" id="nclist" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true" >
+
 
                         </select>
                     </div>
@@ -33,10 +32,11 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-3 mb-3 text-center">
-                        <label for="ncategory" class="form-label" style="color: black"><b>Kategori Adı</b></label>
+                        <label for="nctitle" class="form-label" style="color: black"><b>Kategori Adı</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="ncategory" id="ncategory" class="form-control" required />
+                        <input type="text" name="nctitle" id="nctitle" class="form-control" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('nctitle') }" th:errors="*{nctitle}"></div>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -69,5 +69,11 @@
 
 
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/newscategoryAdd.js}"></script>
+</th:block>
+
+
 </body>
 </html>

@@ -9,21 +9,38 @@
 <body>
 <th:block layout:fragment="content">
 
-    <div class="row">
+
+    <div class="row mt-3" style="margin-left: 1px">
+
+        <div class="col-sm-5 " >
+            <a href="/news/add"><button type="button" class="btn btn-primary"  >Haber Ekle</button> </a>
+            <a href="/news/category"><button type="button" class="btn btn-primary"  >Kategori Ekle</button> </a>
+        </div>
+
+        <div class="col-sm-7"></div>
+
+
+    </div>
+
+
+
+
+
+    <div class="row mt-3">
 
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
 
             <div class="main-card mb-3 card mainCart">
-                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Haber Ekleme</div>
-                <p style="text-align: center;margin-top: 15px;color: black">Haber bilgilerinizi aşağıda girebilirsiniz.</p>
-                <form method="post" class="row p-3" id="news_add_form" action="/news/newsAdd" th:object="${news}" enctype="multipart/form-data">
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Haber Düzenleme</div>
+                <p style="text-align: center;margin-top: 15px;color: black">Haber bilgilerinizi aşağıda düzenleyebilirsiniz.</p>
+                <form method="post" th:action="@{'/news/newsUpdate/'+${newsUpdate.getRnid()}}" th:object="${newsUpdate}"  class="row p-3" id="news_add_form"  enctype="multipart/form-data">
 
                     <div class="col-md-3 mb-3 text-center">
                         <label for="ntitle" class="form-label" style="color: black"><b>Haber Başlık</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="ntitle" id="ntitle" class="form-control" required />
+                        <input th:value="${newsUpdate.ntitle}" type="text" name="ntitle" id="ntitle" class="form-control" required />
                         <div style="color:red;" th:if="${ #fields.hasErrors('ntitle') }" th:errors="*{ntitle}"></div>
 
                     </div>
@@ -34,8 +51,9 @@
                         <label for="ndescription" class="form-label" style="color: black"><b>Kısa Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="ndescription" id="ndescription" class="form-control" required />
+                        <input th:value="${newsUpdate.ndescription}" type="text" name="ndescription" id="ndescription" class="form-control" required />
                         <div style="color:red;" th:if="${ #fields.hasErrors('ndescription') }" th:errors="*{ndescription}"></div>
+
                     </div>
 
                     <div class="col-md-1"></div>
@@ -44,7 +62,7 @@
                         <label  class="form-label" style="color: black"><b>Uzun Açıklama</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <textarea id="editor" name="ndetail"></textarea>
+                        <textarea th:text="${newsUpdate.ndetail}"  id="editor" name="ndetail"></textarea>
                         <div style="color:red;" th:if="${ #fields.hasErrors('ndetail') }" th:errors="*{ndetail}"></div>
 
                     </div>
@@ -68,8 +86,8 @@
                     </div>
                     <div class="col-md-8 mb-3">
                         <select class="form-select" name="nstatus" id="nstatus">
-                            <option value="0" >Pasif</option>
-                            <option value="1">Aktif</option>
+                            <option th:selected="(${newsUpdate.nstatus} == false)" value="0" >Pasif</option>
+                            <option th:selected="(${newsUpdate.nstatus} == true)" value="1">Aktif</option>
 
                         </select>
                     </div>
@@ -118,15 +136,15 @@
 
 
 
+
 </th:block>
-
-
-
 
 <th:block layout:fragment="script">
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
     <script th:src="@{/js/ck5editor.js}"></script>
     <script th:src="@{/js/newsAdd.js}"></script>
 </th:block>
+
+
 </body>
 </html>

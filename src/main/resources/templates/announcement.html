@@ -43,7 +43,7 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="aPage" id="aPage">
+                        <select onchange="allAnn()" class="form-select" name="aPage" id="aPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -92,18 +92,7 @@
                 </tr>
                 </thead>
                 <tbody id="annRow">
-                <tr>
-                    <td style="text-align: center">Aktif</td>
-                    <td style="text-align: center">İndirim!</td>
-                    <td style="text-align: center">Bütün ürünler de %5 indirim!</td>
-                    <td style="text-align: center">13.10.2021</td>
-                    <td style="text-align: center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
-                           <a href="/announcement/edit"><button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button> </a>
-                        </div>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -132,5 +121,12 @@
 
 
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/announcement.js}"></script>
+</th:block>
+
+
+
 </body>
 </html>
