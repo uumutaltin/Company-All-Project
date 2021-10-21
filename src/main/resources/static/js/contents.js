@@ -108,11 +108,6 @@ function pageMinus(){
 }
 
 
-
-
-
-
-
 // Contents delete - start
 function fncContentsDelete( rcid ) {
     let answer = confirm("Silmek istediğinizden emin misiniz?");
