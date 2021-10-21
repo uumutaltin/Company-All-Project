@@ -25,7 +25,7 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="cPage" id="cPage">
+                        <select onchange="allCustomer()" class="form-select" name="cPage" id="cPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -50,7 +50,7 @@
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
                     <button id="contentSearch" class="btn btn-outline-primary">Ara</button>
                 </div>
             </div>
@@ -75,42 +75,8 @@
 
                 </tr>
                 </thead>
-                <tbody id="contentRow">
-                <tr>
-                    <td class="text-center">2</td>
-                    <td class="text-center">Erkan</td>
-                    <td class="text-center">Bilir</td>
-                    <td class="text-center">erkan@mail.com</td>
-                    <td class="text-center">5057507985</td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-ban"></i></button>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-user-times"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                <tbody id="customerRow">
 
-                <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Ali</td>
-                    <td class="text-center">Bilmem</td>
-                    <td class="text-center">ali@mail.com</td>
-                    <td class="text-center">5057507985</td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-user-alt"></i></button>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-user-times"></i></button>
-                        </div>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>
@@ -123,10 +89,10 @@
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+                <button type="button" onclick="changeVariables(0)"  class="btn btn-light"> İlk </button>
+                <button  onclick="pageMinus()" type="button" class="btn btn-light"> <<< </button>
+                <button id="btnPlus" onclick="pagePlus()" type="button" class="btn btn-light"> >>> </button>
+                <button type="button"  onclick="changeVariables(-5)"  class="btn btn-light"> Son </button>
             </div>
 
 
@@ -138,6 +104,9 @@
 
 
 
+</th:block>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/customer.js}"></script>
 </th:block>
 </body>
 </html>
