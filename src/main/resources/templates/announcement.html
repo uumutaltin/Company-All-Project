@@ -43,7 +43,7 @@
 
                     <div class="col-sm-2">
 
-                        <select onchange="allAnn()" class="form-select" name="aPage" id="aPage">
+                        <select onchange="allAnn()" class="form-select" name="cPage" id="cPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -68,7 +68,7 @@
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="annSearch" aria-describedby="addon-wrapping">
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="annSearch" aria-describedby="addon-wrapping">
                     <button id="annSearch" class="btn btn-outline-primary">Ara</button>
                 </div>
             </div>
@@ -100,15 +100,15 @@
     </div>
     <div class="row" >
         <div class="col-sm-5" >
-            <div>1/1</div>
+            <div><label id="totalPageNumber"></label></div>
         </div>
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+                <button onclick="changeVariables(0)" type="button" class="btn btn-light"> İlk </button>
+                <button onclick="pageMinus()" type="button" class="btn btn-light"> <<< </button>
+                <button onclick="pagePlus()" type="button" class="btn btn-light"> >>> </button>
+                <button onclick="changeVariables(-5)" type="button" class="btn btn-light"> Son </button>
             </div>
 
 

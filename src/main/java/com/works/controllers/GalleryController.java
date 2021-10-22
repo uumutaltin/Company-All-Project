@@ -162,9 +162,6 @@ public class GalleryController {
         }
         return "galleryPropertyAdd";
     }
-
-
-
     // gallery image Update - end
 
 
@@ -265,9 +262,6 @@ public class GalleryController {
 
 
     }
-
-
-
     // gallery Image Delete - end
 
 

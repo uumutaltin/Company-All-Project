@@ -15,15 +15,16 @@
         <div class="col-sm-8">
 
             <div class="main-card mb-3 card mainCart">
-                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Duyuru Ekleme</div>
+                <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Duyuru Düzenleme</div>
 
-                <form class="row p-3" id="announcement_add_form">
+                <form method="post" th:action="@{'/announcement/update/'+${announcementUpdate.getRaid()}}" th:object="${announcementUpdate}" class="row p-3" id="announcement_update_form">
 
                     <div class="col-md-1 mb-3">
 
                     </div>
                     <div class="col-md-10 mb-3">
-                        <input type="text" name="atitle" id="atitle" class="form-control" placeholder="Duyuru Başlığını Giriniz" required />
+                        <input th:value="${announcementUpdate.atitle}" type="text" name="atitle" id="atitle" class="form-control" placeholder="Duyuru Başlığını Giriniz" required />
+                        <div style="color:red;" th:if="${ #fields.hasErrors('atitle') }" th:errors="*{atitle}"></div>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -34,8 +35,8 @@
 
                     </div>
                     <div class="col-md-10 mb-3">
-
-                        <textarea id="editor" name="editor"></textarea>
+                        <textarea th:text="${announcementUpdate.adetail}" id="editor" name="adetail"></textarea>
+                        <div style="color:red;" th:if="${ #fields.hasErrors('adetail') }" th:errors="*{adetail}"></div>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -43,8 +44,8 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-10 mb-3">
                         <select class="form-select" name="astatus" id="astatus">
-                            <option value="0" >Pasif</option>
-                            <option value="1">Aktif</option>
+                            <option th:selected="(${announcementUpdate.astatus} == false)" value="0" >Pasif</option>
+                            <option th:selected="(${announcementUpdate.astatus} == true)" value="1">Aktif</option>
 
                         </select>
                     </div>
