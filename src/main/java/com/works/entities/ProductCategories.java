@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 public class ProductCategories {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pcsid", nullable = false)
     private Integer pcsid;
 
