@@ -45,11 +45,11 @@ function createRow(data){
         const itm = data [i];
         if (itm.ban == 0){
             html += `<tr>
-            <td>`+itm.cid+`</td>
-            <td>`+itm.cname+`</td>
-            <td>`+itm.csurname+`</td>
-            <td>`+itm.email+`</td>
-            <td>`+itm.mobile_phone+`</td>
+            <td style="text-align: center">`+itm.cid+`</td>
+            <td style="text-align: center">`+itm.cname+`</td>
+            <td style="text-align: center">`+itm.csurname+`</td>
+            <td style="text-align: center">`+itm.email+`</td>
+            <td style="text-align: center">`+itm.mobile_phone+`</td>
            <td class="text-center">
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 

@@ -12,82 +12,132 @@
     <div class="main-card mb-3 card mainCart mt-3">
         <div class="card-header cardHeader">Galeriler</div>
         <div class="row">
+
+
             <div class="col-sm-6">
-                <div class="card mt-3 mb-3 ml-3" style="width: 18rem;">
-                    <img src="https://cdn.motor1.com/images/mgl/3PWOj/s1/audi-rs7-rendering-rs6-avant-styling.jpg" class="card-img-top" alt="...">
-                    <div class="card-body" style="background-color: #002752;color: white">
-                        <h5>
-                            <div class="row">
-                                <div class="col-sm-6"><a href="/gallery/property/edit" style="color: white">Audi Rs7</a></div>
+
+
+                <div class="row">
+
+                    <div th:each="item : ${galleryList}" class="col-sm-6">
+                        <div  class="card mt-3 mb-3 ml-3" style="width: 18rem;">
+                            <img  th:src="@{/uploads/gallery/{image}(image=${ item.getGiname() })}" class="card-img-top" alt="" style="height: 200px;">
+                        </div>
+                        <div class="card-body" style="background-color: #002752;color: white">
+                            <div  class="row">
+                                <div class="col-sm-6"><a th:href="@{'/gallery/property/edit/'+${item.getGid()}+'/'+${item.getGiid()}}"  th:text="${item.getGisubtitle()}"  style="color: white"></a></div>
                                 <div class="col-sm-3"></div>
-                                <div class="col-sm-3">  <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt" style="color: white"></i></button></div>
+                                <div class="col-sm-3"> <a th:href="@{'/gallery/deleteImage/'+${item.getGid()}+'/'+${item.getGiid()}}" > <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt" style="color: white"></i></button> </a></div>
                             </div>
-                        </h5>
+                        </div>
+
                     </div>
+
                 </div>
+
+
+
             </div>
+
+
+
+
+
+
+
+
+
+
             <div class="col-sm-6">
-                <div class="main-card mb-3 card mainCart mt-3">
-                    <div class="card-header cardHeader" style="background-color: #087EB0; color: white">Galeriye Resim Ekle</div>
-                    <div class="col-md-8 mb-3 mt-3">
-                        <input type="text" name="newGallery" id="newGallery" class="form-control" placeholder="Yeni Galeri" required />
-                    </div>
-                    <div class="col-md-8 mb-3 mt-3">
-                        <input type="file" name="galleryFile" id="galleryFile" class="form-control" placeholder="Galerinin Açıklaması" required />
-                    </div>
-                    <div class="col-md-8 mb-3 mt-3">
-                        <input type="text" name="imageWrite" id="imageWrite" class="form-control" placeholder="Resim yazısı(alt).." required />
-                    </div>
 
-                    <div class="row">
-                        <div class="col-sm-5 mb-3">
-                            <button type="button" class="btn ml-3" style="background-color:#087EB0; color: white ">Resim Ekle</button>
+                <!------------   Galeri Resim Ekle ------------>
+                <div class="main-card mb-3 card mainCart mt-3">
+                    <div th:object="${gallery}"  class="card-header cardHeader" style="background-color: #087EB0; color: white">Galeriye Resim Ekle</div>
+                    <form  method="post" action="/gallery/imageAdd" class="row p-3" id="gallery_image_add_form" th:object="${GalleryImage}"  enctype="multipart/form-data">
+                        <input type="hidden" id="galleryID" th:value="${gallery.getGid()}"/>
+
+                        <div class="col-md-8 mb-3 mt-3">
+                            <select name="gAll" id="gAll" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true" >
+
+                            </select>
                         </div>
-                    </div>
-                    <div class="alert alert-warning" role="alert">
-                        Yüklenecek resmin genişliği veya yüksekliği 400px'den küçük olamaz.. <br>
-                        Resmin boyutu 2MB'tan büyük olamaz <br>
-                        İzin verilen türler : jpg, jpeg, png <br>
-                    </div>
+
+                        <div class="col-md-8 mb-3 mt-3">
+                            <input type="file" name="galleryFile" id="galleryFile" class="form-control"  />
+                        </div>
+
+                        <div class="col-md-8 mb-3 mt-3">
+                            <input type="text" name="gisubtitle" id="gisubtitle" class="form-control"/>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-5 mb-3">
+                                <button type="submit" class="btn ml-3" style="background-color:#087EB0; color: white ">Resim Ekle</button>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning" role="alert">
+                            Yüklenecek resmin genişliği veya yüksekliği 400px'den küçük olamaz.. <br>
+                            Resmin boyutu 2MB'tan büyük olamaz <br>
+                            İzin verilen türler : jpg, jpeg, png <br>
+                        </div>
+                    </form>
+                </div>
+                <!------------   Galeri Resim Ekle ------------>
+
+
+
+
+                <!------------   Galeri Düzenle ------------>
+                <div class="main-card mb-3 card mainCart mt-3">
+                    <div class="card-header cardHeader" style="background-color: #087EB0; color: white">Galeri Düzenle</div>
+
+                    <form method="post" th:action="@{'/gallery/galleryUpdate/'+${gallery.getGid()}}" class="row p-3" id="gallery_update_form" th:object="${gallery}">
+
+                        <div class="col-md-8 mb-3 mt-3">
+                            <input th:value="${gallery.gname}" type="text" name="gname" id="gname" class="form-control" placeholder="Yeni Galeri" required />
+                            <div style="color:red;" th:if="${ #fields.hasErrors('gname') }" th:errors="*{gname}"></div>
+                        </div>
+                        <div class="col-md-8 mb-3 mt-3">
+                            <input th:value="${gallery.gdetail}" type="text" name="gdetail" id="gdetail" class="form-control" />
+                        </div>
+                        <div class="form-check ml-3">
+                            <input th:checked="(${gallery.gstatus} == true)" value="1" class="form-check-input" type="radio" name="gstatus" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Aktif
+                            </label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <input th:checked="(${gallery.gstatus} == false)" value="0" class="form-check-input" type="radio" name="gstatus" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Pasif
+                            </label>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-5 mb-3">
+                                <button type="submit" class="btn ml-3" style="background-color:#087EB0; color: white ">Galeriyi Düzenle</button>
+                            </div>
+                        </div>
+                    </form>
 
 
                 </div>
-                <div class="main-card mb-3 card mainCart mt-3">
-                    <div class="card-header cardHeader" style="background-color: #087EB0; color: white">Galeriye Düzenle</div>
-                    <div class="col-md-8 mb-3 mt-3">
-                        <input type="text" name="newGallery2" id="newGallery2" class="form-control" placeholder="Yeni Galeri" required />
-                    </div>
-                    <div class="col-md-8 mb-3 mt-3">
-                        <input type="text" name="newGallery3" id="newGallery3" class="form-control" placeholder="Yeni Galeri" required />
-                    </div>
-                    <div class="form-check ml-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Aktif
-                        </label>
-                    </div>
-                    <div class="form-check ml-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Pasif
-                        </label>
-                    </div>
+                <!------------   Galeri Düzenle ------------>
 
 
-                    <div class="row">
-                        <div class="col-sm-5 mb-3">
-                            <button type="button" class="btn ml-3" style="background-color:#087EB0; color: white ">Galeriyi Düzenle</button>
-                        </div>
-                    </div>
-
-
-
-                </div>
             </div>
         </div>
     </div>
     </div>
 
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/galleryEdit.js}"></script>
+</th:block>
+
+
+
 </body>
 </html>

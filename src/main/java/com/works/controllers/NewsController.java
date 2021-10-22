@@ -112,7 +112,7 @@ public class NewsController {
     // news category List - end
 
     // news Add - start
-    @PostMapping("newsAdd")
+    @PostMapping("/newsAdd")
     public String newsAdd(@Valid @ModelAttribute("news")News news,BindingResult bindingResult,@RequestParam("newsimage_file") MultipartFile file,@RequestParam("newsCategoryID") String newsCatID){
 
         String fileName = null;
