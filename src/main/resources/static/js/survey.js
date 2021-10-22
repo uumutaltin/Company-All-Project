@@ -1,5 +1,6 @@
 let globalArr = []
 let pageNumber = 0
+let lastPageNumber = 0;
 
 function changeVariables(dataNumber){
     if (dataNumber == -5) {

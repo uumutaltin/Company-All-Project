@@ -290,4 +290,25 @@ public class SurveyController {
         return lsx;
 
     }
+
+
+
+    @ResponseBody
+    @GetMapping("/surveyList/pageCount/{stpageSize}/{stPageStatus}")
+    public Integer pageCount(@PathVariable String stpageSize,@PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = srRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stpageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
+    }
+
 }

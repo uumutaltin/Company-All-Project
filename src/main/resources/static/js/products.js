@@ -12,7 +12,7 @@ function changeVariables(dataNumber){
         fncSearch();
     }
     else{
-        allProducts
+        allProducts()
     }
 }
 allProducts();
@@ -107,7 +107,7 @@ pageCount(1)
 function pageCount(countStatus){
     const pageSize = $("#cPage").val()
     $.ajax({
-        url: './news/newsList/pageCount/'+pageSize+'/'+countStatus,
+        url: './products/productList/pageCount/'+pageSize+'/'+countStatus,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
