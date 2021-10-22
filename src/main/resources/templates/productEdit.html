@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Ürün Ekleme</title>
+    <title>Ürün Düzenle</title>
 
 
 </head>
@@ -16,10 +16,10 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
 
-            <div class="main-card mb-3 card mainCart" th:object="${product}">
+            <div class="main-card mb-3 card mainCart" th:object="${productUpdate}">
                 <div class="card-header cardHeader" style="background-color: #123c69;color: white;text-align: center">Ürün Ekleme</div>
                 <p style="text-align: center;margin-top: 15px;color: black">Ürün Bilgilerinizi Giriniz.</p>
-                <form class="row p-3" id="customer_add_form" th:object="${productCategoryList}" method="post"  action="/products/add" enctype="multipart/form-data">
+                <form class="row p-3" id="customer_add_form" method="post"  th:action="@{'/products/update/'+${productUpdate.getPid()}}" enctype="multipart/form-data" th:object="${productCategoryList}" >
 
                     <div class="col-md-3 mb-3 text-center">
                         <label for="pcategory" class="form-label" style="color: black"><b>Ürün Kategori Seçiniz</b></label>
@@ -37,7 +37,7 @@
                         <label for="pname" class="form-label" style="color: black"><b>Ürün Adını Giriniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="pname" id="pname" class="form-control" required placeholder="Ürün Adı"/>
+                        <input th:value="${productUpdate.getPname()}" type="text" name="pname" id="pname" class="form-control" required placeholder="Ürün Adı"/>
                     </div>
 
                     <div class="col-md-1"></div>
@@ -46,7 +46,7 @@
                         <label for="psdetail" class="form-label" style="color: black"><b>Kısa Açıklama Giriniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="psdetail" id="psdetail" class="form-control" required placeholder="Ürün Kısa Açıklama"/>
+                        <input  th:value="${productUpdate.getPsdetail()}" type="text" name="psdetail" id="psdetail" class="form-control" required placeholder="Ürün Kısa Açıklama"/>
                     </div>
                     <div class="col-md-1"></div>
 
@@ -54,7 +54,7 @@
                         <label for="pdetail" class="form-label" style="color: black"><b>Ürün Açıklamasını Giriniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <textarea name="pdetail" id="pdetail" cols="30" rows="5"  class="form-control" required placeholder="Ürün Açıklamasını Giriniz"></textarea>
+                        <textarea  th:text="${productUpdate.getPdetail()}" name="pdetail" id="pdetail" cols="30" rows="5"  class="form-control" required placeholder="Ürün Açıklamasını Giriniz"></textarea>
                     </div>
                     <div class="col-md-1"></div>
 
@@ -62,24 +62,18 @@
                         <label for="pprice" class="form-label" style="color: black"><b>Ürün Fiyatını Giriniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="pprice" id="pprice" class="form-control" required placeholder="Ürün Fiyat"/>
+                        <input  th:value="${productUpdate.getPprice()}"type="text" name="pprice" id="pprice" class="form-control" required placeholder="Ürün Fiyat"/>
                     </div>
                     <div class="col-md-1"></div>
-                    <div class="col-md-3 mb-3 text-center">
-                        <label for="advertimage_file" class="form-label" style="color: black"><b>Reklam Görseli</b></label>
-                    </div>
-                    <div class="col-md-8 mb-3">
-                        <input type="file" name="advertimage_file" id="advertimage_file" class="form-control" />
-                    </div>
-                    <div class="col-md-1"></div>
+
                     <div class="col-md-3 mb-3 text-center">
                         <label for="ptype" class="form-label" style="color: black"><b>Ürün Tipini Seçiniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
                         <select class="form-select" name="ptype" id="ptype">
-                            <option value="0" >Ürün Tipini Seçiniz</option>
-                            <option value="1">Kiralık</option>
-                            <option value="2">Satılık</option>
+                            <option th:selected="${productUpdate.ptype == 0}" value="0" >Ürün Tipini Seçiniz</option>
+                            <option  th:selected="${productUpdate.ptype == 1}" value="1">Kiralık</option>
+                            <option  th:selected="${productUpdate.ptype == 2}" value="2">Satılık</option>
                         </select>
                     </div>
                     <div class="col-md-1"></div>
@@ -89,9 +83,9 @@
                     </div>
                     <div class="col-md-8 mb-3">
                         <select class="form-select" name="pcampaign" id="pcampaign">
-                            <option value="0" >Seçiniz</option>
-                            <option value="1">Evet</option>
-                            <option value="2">Hayır</option>
+                            <option th:selected="${productUpdate.ptype == 0}"  value="0" >Seçiniz</option>
+                            <option th:selected="${productUpdate.ptype == 1}"  value="1">Evet</option>
+                            <option th:selected="${productUpdate.ptype == 2}"  value="2">Hayır</option>
                         </select>
                     </div>
                     <div class="col-md-1"></div>
@@ -100,7 +94,7 @@
                         <label for="pcampaignname" class="form-label" style="color: black"><b>Kampanya Adı</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="pcampaignname" id="pcampaignname" class="form-control" required placeholder="Kampanya Adı"/>
+                        <input th:value="${productUpdate.getPcampaignname()}" type="text" name="pcampaignname" id="pcampaignname" class="form-control" required placeholder="Kampanya Adı"/>
                     </div>
                     <div class="col-md-1"></div>
 
@@ -108,7 +102,7 @@
                         <label for="pcampaigndetail" class="form-label" style="color: black"><b>Kampanya Detayını Giriniz</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <textarea name="pcampaigndetail" id="pcampaigndetail" cols="30" rows="5"  class="form-control" required placeholder="Kampanya Detayını Giriniz"></textarea>
+                        <textarea th:text="${productUpdate.getPcampaigndetail()}" name="pcampaigndetail" id="pcampaigndetail" cols="30" rows="5"  class="form-control" required placeholder="Kampanya Detayını Giriniz"></textarea>
                     </div>
                     <div class="col-md-1"></div>
 
@@ -116,7 +110,7 @@
                         <label for="padress" class="form-label" style="color: black"><b>Adresi:</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <textarea name="padress" id="padress" cols="30" rows="5"  class="form-control" required></textarea>
+                        <textarea th:text="${productUpdate.getPadress()}" name="padress" id="padress" cols="30" rows="5"  class="form-control" required></textarea>
                     </div>
                     <div class="col-md-1"></div>
 
@@ -124,7 +118,7 @@
                         <label for="platitude" class="form-label" style="color: black"><b>Enlem:</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="platitude" id="platitude" class="form-control" required />
+                        <input th:value="${productUpdate.getPlatitude()}" type="text" name="platitude" id="platitude" class="form-control" required />
                     </div>
                     <div class="col-md-1"></div>
 
@@ -132,18 +126,35 @@
                         <label for="plongitude" class="form-label" style="color: black"><b>Boylam:</b></label>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <input type="text" name="plongitude" id="plongitude" class="form-control" required />
+                        <input th:value="${productUpdate.getPlongitude()}" type="text" name="plongitude" id="plongitude" class="form-control" required />
                     </div>
                     <div class="col-md-1"></div>
 
 
 
                     <div class="col-sm-1"></div>
-                    <div class="col-md-8"></div>
-                    <div class="col-md-1">
-                        <div class="btn-group col-md-3" role="group">
-                            <button type="submit" class="btn btn-info mr-1">Ekle</button>
-                           <a href="/products"> <button type="button" class="btn btn-danger">İptal</button></a>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-6">
+                        <div class="btn-group col-md-12" role="group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-info mr-1">Kaydet</button>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <a href="/products"> <button type="button" class="btn btn-danger">İptal</button></a>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <a th:href="@{/products/images/{id}(id = ${productUpdate.getPid()})}"> <button type="button" class="btn btn-info btn-lg "><h6>Resim Ekle</h6></button></a>
+                                </div>
+
+                            </div>
+
+
+
+
+
                         </div>
                     </div>
 

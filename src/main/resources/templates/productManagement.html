@@ -37,7 +37,7 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="cPage" id="cPage">
+                        <select onchange="allProducts()" class="form-select" name="cPage" id="cPage">
                             <option value="5" >5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
@@ -55,7 +55,7 @@
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
                     <button id="contentSearch" class="btn btn-outline-primary">Ara</button>
                 </div>
             </div>
@@ -78,18 +78,7 @@
                 </tr>
                 </thead>
                 <tbody id="contentRow">
-                <tr>
-                    <td class="text-center">Araba</td>
-                    <td class="text-center">Araba Başlık</td>
-                    <td class="text-center">Araba Açıklama</td>
-                    <td class="text-center">Araç , Araba</td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button>
-                            <button  type="button" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -111,6 +100,10 @@
         </div>
     </div>
 
+</th:block>
+<th:block layout:fragment="script">
+
+    <script th:src="@{/js/products.js}"></script>
 </th:block>
 </body>
 </html>

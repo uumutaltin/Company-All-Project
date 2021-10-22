@@ -1,0 +1,101 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Düzenle</title>
+
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="row" th:object="${product}">
+        <form class="row p-3" id="customer_add_form" th:action="@{'/products/add/image/'+${product.getPid()}}" method="post"   enctype="multipart/form-data" >
+            <div class="col-md-3 mb-3 text-center">
+                <label for="advertimage_file" class="form-label" style="color: black"><b>Resim Ekle</b></label>
+            </div>
+            <div class="col-md-8 mb-3">
+                <input type="file" name="advertimage_file" id="advertimage_file" class="form-control" />
+            </div>
+            <div class="col-md-1">
+                <div class="btn-group col-md-3" role="group">
+                <button type="submit" class="btn btn-info mr-1">Ekle</button>
+            </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+
+        <!-- Carousel wrapper -->
+        <div
+                id="carouselMultiItemExample"
+                class="carousel slide carousel-dark text-center"
+                data-mdb-ride="carousel"
+        >
+            <!-- Controls -->
+            <div class="d-flex justify-content-center mb-4">
+                <button
+                        class="carousel-control-prev position-relative"
+                        type="button"
+                        data-mdb-target="#carouselMultiItemExample"
+                        data-mdb-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                        class="carousel-control-next position-relative"
+                        type="button"
+                        data-mdb-target="#carouselMultiItemExample"
+                        data-mdb-slide="next"
+                >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- Inner -->
+            <div class="carousel-inner py-4" >
+                <!-- Single item -->
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4" th:each="item, iter : ${product.getPimages()}">
+                                <div class="card">
+                                    <img
+                                            th:src="@{/uploads/products/{id}/{imagename} (id =${product.getPid()},imagename =${item.getImageName()})}"
+                                            class="card-img-top"
+                                            alt="..."
+                                    />
+                                    <div class="card-body">
+                                        <h5 class="card-title"></h5>
+                                        <a th:href="@{/products/delete/image/{prodid}/{imageid} (prodid =${product.getPid()},imageid =${item.getIid()})}" class="btn btn-danger btn-lg">Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Inner -->
+        </div>
+
+
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <script th:src="@{/js/productadd.js}"></script>
+</th:block>
+</body>
+</html>
