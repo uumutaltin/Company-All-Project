@@ -24,7 +24,6 @@ function fncCategoryList(){
         }
     })
 }
-/*
 let pcat = $('#pcategory')
 function createCategory( data ){
     pcat.find('option').remove().end();
@@ -37,4 +36,4 @@ function createCategory( data ){
         pcat.append(`<option data-subtext="" value="`+itm.pcsid+`">`+st+`</option>` );
 
     }
-}*/
+}
