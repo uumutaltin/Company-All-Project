@@ -45,6 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/survey/**").permitAll()
                 .antMatchers("/error/**").permitAll()
+                .antMatchers("/api/users/**").hasAnyRole("MVC","REST")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).permitAll()
