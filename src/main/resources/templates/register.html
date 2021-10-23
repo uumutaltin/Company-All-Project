@@ -13,7 +13,7 @@
         <div class="col-sm-12">
 
 
-            <form th:action="@{/login}" method="post">
+            <form action="/register/userRegister" th:object="${user}" method="post">
                 <section class="vh-100">
                     <div class="container py-5 h-100">
                         <div class="row d-flex align-items-center justify-content-center h-100">
@@ -25,14 +25,16 @@
                                     <div th:if="${param.error}">
                                         <span style="color: red"><b>Kullanıcı Adı veya Şifre Hatalıdır!</b></span>
                                     </div>
-                                    <h5>Şirket Admin Bilgileri</h5>
+                                    <h5>Şirket Bilgileri</h5>
                                     <div class="form-outline mb-3">
-                                        <input type="email" id="companyname" name="companyname" class="form-control form-control-lg" placeholder="Şirket Adınız..." />
+                                        <input type="text" id="companyname" name="companyname" class="form-control form-control-lg" placeholder="Şirket Adınız..." />
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('companyname') }" th:errors="*{companyname}"></div>
+
 
                                     </div>
                                     <div class="form-outline mb-3">
-                                        <input type="email" id="adress" name="adress" class="form-control form-control-lg"  placeholder="Şirket Adresi..." />
-
+                                        <input type="text" id="adress" name="adress" class="form-control form-control-lg"  placeholder="Şirket Adresi..." />
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('adress') }" th:errors="*{adress}"></div>
                                     </div>
                                     <div class="form-outline mb-3">
                                         <select class="form-select" name="sector" id="sector">
@@ -69,41 +71,57 @@
 
                                     </div>
                                     <div class="form-outline mb-3">
-                                        <input type="email" id="phone" name="phone" class="form-control form-control-lg" placeholder="Şirket GSM..."/>
+                                        <input type="text" id="phone" name="phone" class="form-control form-control-lg" placeholder="Şirket GSM..."/>
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('phone') }" th:errors="*{phone}"></div>
+
+
                                     </div>
 
                                     <h5>Şirket Admin Bilgileri</h5>
                                     <div class="form-outline mb-3">
                                         <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Yetkili Adı..."/>
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('username') }" th:errors="*{username}"></div>
 
                                     </div>
 
                                     <div class="form-outline mb-3">
                                         <input type="text" id="surname" name="surname" class="form-control form-control-lg" placeholder="Yetkili Soyadı..." />
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('surname') }" th:errors="*{surname}"></div>
 
                                     </div>
 
                                     <div class="form-outline mb-3">
                                         <input type="email" id="mail" name="mail" class="form-control form-control-lg" placeholder="Yetkili Mail Adresi..."/>
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('mail') }" th:errors="*{mail}"></div>
+
 
                                     </div>
                                     <!-- Password input -->
                                     <div class="form-outline mb-3">
                                         <input type="password" id="password" name="password" class="form-control form-control-lg"  placeholder="Şifre..."/>
+                                        <div style="color:red;" th:if="${ #fields.hasErrors('password') }" th:errors="*{password}"></div>
+
 
                                     </div>
+
                                     <div class="form-outline mb-3">
-                                        <input type="password" id="repassword" name="repassword" class="form-control form-control-lg" placeholder="Şifrenizi Tekrar Giriniz" />
 
+                                        <label  for="sector">Role</label>
+                                        <select class="form-select" id="roleIDSt" name="roleIDSt" aria-label="Floating label select example" >
+                                            <option value="0">Seçim yapınız</option>
+                                            <option value="1">MVC</option>
+                                            <option value="2">Rest</option>
+                                        </select>
                                     </div>
+
 
 
 
                                     <!-- Submit button -->
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydol</button>
                                 </form>
-                                <p>Hesabınız var mı ? kayıt olmak için <a href="/login">Buraya Tıklayınız</a></p>
-                                <p>Ana sayfaya gitmek için <a href="/firstPage">Tıklayınız</a></p>
+                                <p>Hesabınız var mı ? Giriş yapmak için <a href="/login">Buraya Tıklayınız</a></p>
+                                <p>Ana sayfaya gitmek için <a href="/">Tıklayınız</a></p>
 
                             </div>
                         </div>
