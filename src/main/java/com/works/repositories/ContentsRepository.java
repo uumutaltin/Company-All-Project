@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface ContentsRepository extends JpaRepository<Contents,Integer> {
 
+    Page<Contents> findByOrderByCidDesc(Pageable pageable);
+
     List<Contents> findByCstatusIsTrueOrderByCidDesc();
 
     List<Contents> findByCstatusIsFalseOrderByCidDesc();
