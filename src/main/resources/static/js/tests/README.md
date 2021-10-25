@@ -16,7 +16,7 @@ To run the unit test suite via [Karma](https://karma-runner.github.io/) and debu
 
 **Note:** Your new unit tests should fail before your changes are applied to the plugin, and should pass after your changes are applied to the plugin.
 
-## What should a unit test look like?
+## What should a unit test look userLike?
 
 - Each test should have a unique name clearly stating what unit is being tested.
 - Each test should be in the corresponding `describe`.
