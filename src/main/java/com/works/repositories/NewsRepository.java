@@ -1,6 +1,7 @@
 package com.works.repositories;
 
 import com.works.entities.News;
+import com.works.entities.redis.NewsRedis;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,9 @@ public interface NewsRepository extends JpaRepository<News,Integer> {
 
     @Query("select n from News n where n.nstatus = ?1 and n.newsCategory.ncid = ?2 order by n.nid DESC")
     List<News> findFilter(Boolean nstatus, Integer ncid);
+
+    @Query(value = "SELECT * FROM news as n INNER JOIN news_category as nc on n.news_category_ncid = nc.ncid where nc.ncid = :id", nativeQuery = true)
+    List<News> findCategory(Integer id);
 
 
 
