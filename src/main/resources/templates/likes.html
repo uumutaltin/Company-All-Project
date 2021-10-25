@@ -25,12 +25,7 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="lPage" id="lPage">
-                            <option value="5" >5</option>
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="-1">Hepsi</option>
-                        </select>
+
 
                     </div>
 
@@ -49,9 +44,7 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="lsearch" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
-                    <button id="likesSearch" class="btn btn-outline-primary">Ara</button>
+
                 </div>
             </div>
         </div>
@@ -73,11 +66,11 @@
                 </tr>
                 </thead>
                 <tbody id="likesRow">
-                <tr>
-                    <td>Ali Bilmem</td>
-                    <td>Apple Macbook</td>
-                    <td>5</td>
-                    <td>13.10.2021</td>
+                <tr th:each="item,iter : ${allLikes} ">
+                    <td th:text="${item.getCname()}"></td>
+                    <td th:text="${item.getPname()}"></td>
+                    <td  th:text="${item.getUserpoint()}"></td>
+                    <td th:text="${item.getLikedate()}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -86,15 +79,12 @@
     </div>
     <div class="row" >
         <div class="col-sm-5" >
-            <div>1/1</div>
+
         </div>
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+
             </div>
 
 
@@ -112,18 +102,13 @@
 
                     <div class="col-sm-2 mt-2" style="margin-left: 5px">
 
-                        <p style="color: black"> <b> Sayfa başına </b></p>
+
 
                     </div>
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="ltPage" id="ltPage">
-                            <option value="5" >5</option>
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="-1">Hepsi</option>
-                        </select>
+
 
                     </div>
 
@@ -142,9 +127,7 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-3">
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping2"><i class="fas fa-search"></i></span>
-                    <input id="ltsearch" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
-                    <button id="likeTotalSearch" class="btn btn-outline-primary">Ara</button>
+
                 </div>
             </div>
         </div>
@@ -164,9 +147,9 @@
                 </tr>
                 </thead>
                 <tbody id="likeTotalRow">
-                <tr>
-                    <td>Apple MacBook</td>
-                    <td>5</td>
+                <tr th:each="item,iter : ${productLike}" >
+                    <td th:text="${item.getPname()}"></td>
+                    <td th:text="${item.getAvg()}"></td>
 
                 </tr>
                 </tbody>
@@ -176,15 +159,12 @@
     </div>
     <div class="row" >
         <div class="col-sm-5" >
-            <div>1/1</div>
+
         </div>
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+
             </div>
 
 
