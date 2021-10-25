@@ -41,7 +41,7 @@ public class NewsDto {
                 }
                 Collections.reverse(lsx);
                 hm.put(ERest.status,true);
-                hm.put(ERest.message, "İçerik Listeleme işlemi başarılı");
+                hm.put(ERest.message, "Haber Listeleme işlemi başarılı");
                 hm.put(ERest.result, lsx);
 
             }else {
@@ -54,12 +54,12 @@ public class NewsDto {
                 }
 
                 hm.put(ERest.status,true);
-                hm.put(ERest.message, "İçerik Listeleme işlemi başarılı");
+                hm.put(ERest.message, "Haber Listeleme işlemi başarılı");
                 hm.put(ERest.result, ls);
             }
         }catch (Exception ex){
             hm.put(ERest.status,false);
-            hm.put(ERest.message,"İçerik Listeleme işlemi sırasında hata oluştu!");
+            hm.put(ERest.message,"Haber Listeleme işlemi sırasında hata oluştu!");
         }
         return hm;
     }
@@ -76,14 +76,14 @@ public class NewsDto {
 
 
                 hm.put(ERest.status,true);
-                hm.put(ERest.message, "İçerik Listeleme işlemi başarılı");
+                hm.put(ERest.message, "Haber Listeleme işlemi başarılı");
                 hm.put(ERest.result, ncat);
 
 
 
         }catch (Exception ex){
             hm.put(ERest.status,false);
-            hm.put(ERest.message,"İçerik Listeleme işlemi sırasında hata oluştu!");
+            hm.put(ERest.message,"Haber Listeleme işlemi sırasında hata oluştu!");
         }
         return hm;
     }
