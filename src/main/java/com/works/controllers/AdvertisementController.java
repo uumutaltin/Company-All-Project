@@ -310,6 +310,8 @@ public class AdvertisementController {
 
 
     }
+
+
     @ResponseBody
     @GetMapping("/advertList/pageCount/{stpageSize}/{stPageStatus}")
     public Integer pageCount(@PathVariable String stpageSize,@PathVariable String stPageStatus) {
