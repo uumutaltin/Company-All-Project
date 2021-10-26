@@ -3,6 +3,8 @@ package com.works.restcontrollers;
 import com.works.dto.ProductDto;
 import com.works.utils.ERest;
 import com.works.utils.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.Authorization;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/products")
+@Api(value ="ProductRestController",authorizations ={@Authorization(value = "basicAuth")})
 public class ProductRestController {
     final ProductDto pDto;
     final Util util;

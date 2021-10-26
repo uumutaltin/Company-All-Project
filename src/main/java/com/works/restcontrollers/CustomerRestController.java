@@ -5,6 +5,8 @@ import com.works.entities.Customer;
 import com.works.repositories.redis.CustomerRedisRepository;
 import com.works.utils.ERest;
 import com.works.utils.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.Authorization;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customer")
+@Api(value ="CustomerRestController",authorizations ={@Authorization(value = "basicAuth")})
 public class CustomerRestController {
 
     final CustomerDto cDto;
