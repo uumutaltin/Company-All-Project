@@ -1,5 +1,6 @@
 package com.works.entities;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@ApiModel(value = "Duyuru Model")
 public class Announcement {
 
     @Id

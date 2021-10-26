@@ -1,5 +1,6 @@
 package com.works.entities;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@ApiModel(value = "Reklam Model")
 public class Advertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

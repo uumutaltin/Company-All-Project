@@ -4,6 +4,8 @@ import com.works.dto.UserDto;
 import com.works.entities.Users;
 import com.works.utils.ERest;
 import com.works.utils.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.Authorization;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
+@Api(value ="UserRestController",authorizations ={@Authorization(value = "basicAuth")})
 public class UserRestController {
 
     final UserDto uDto;

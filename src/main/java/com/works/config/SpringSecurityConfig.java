@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -31,8 +32,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/advertisement/**").hasRole("MVC")
-                .antMatchers("/announcement/**").hasRole("REST")
+
+                .antMatchers("/advertisement/**").permitAll()
+                .antMatchers("/announcement/**").permitAll()
                 .antMatchers("/contents/**").permitAll()
                 .antMatchers("/customer/**").permitAll()
                 .antMatchers("/gallery/**").permitAll()
@@ -46,15 +48,28 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/survey/**").permitAll()
                 .antMatchers("/error/**").permitAll()
                 .antMatchers("/utils/**").permitAll()
-                .antMatchers("/api/users/**").hasAnyRole("MVC","REST")
-                .antMatchers("/api/products/**").hasAnyRole("MVC","REST")
-                .antMatchers("/api/like/**").hasAnyRole("MVC","REST")
-                .antMatchers("api/advertisement/**").hasAnyRole("MVC","REST")
+
+                .antMatchers("/api/advertisement/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/category/**").hasAnyRole("MVC","REST")
                 .antMatchers("/api/contents/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/customer/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/like/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/news/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/orders/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/products/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/survey/**").hasAnyRole("MVC","REST")
+                .antMatchers("/api/users/**").hasAnyRole("MVC","REST")
+
+                .antMatchers("/static/**").permitAll()
+                .antMatchers("/templates/**").permitAll()
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/inc/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
-                .csrf().disable()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).permitAll()
+                .formLogin().loginPage("/login")
+                .defaultSuccessUrl("/home", true)
+                .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .deleteCookies("JSESSIONID")
@@ -68,4 +83,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers(
+     "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/swagger-ui/**",
+                "/webjars/**");
+    }
+
+
+
+
 }

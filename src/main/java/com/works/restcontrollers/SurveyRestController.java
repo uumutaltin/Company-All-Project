@@ -3,12 +3,15 @@ package com.works.restcontrollers;
 import com.works.dto.SurveyDto;
 import com.works.utils.ERest;
 import com.works.utils.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.Authorization;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/survey")
+@Api(value ="SurveyRestController",authorizations ={@Authorization(value = "basicAuth")})
 public class SurveyRestController {
 
     final SurveyDto sDto;

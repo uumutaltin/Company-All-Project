@@ -1,5 +1,6 @@
 package com.works.entities;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
+@ApiModel(value = "Haber Kategori Model")
 public class NewsCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

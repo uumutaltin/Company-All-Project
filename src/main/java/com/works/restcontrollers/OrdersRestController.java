@@ -4,6 +4,8 @@ import com.works.dto.OrdersDto;
 import com.works.repositories.OrdersRepository;
 import com.works.utils.ERest;
 import com.works.utils.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.Authorization;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -11,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/orders")
+@Api(value ="OrdersRestController",authorizations ={@Authorization(value = "basicAuth")})
 public class OrdersRestController {
 
     final Util util;

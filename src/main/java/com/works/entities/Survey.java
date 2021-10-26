@@ -1,5 +1,6 @@
 package com.works.entities;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@ApiModel(value = "Anket Model")
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
