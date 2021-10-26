@@ -4,7 +4,7 @@
       layout:decorate="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Sipariş Yönetimi</title>
+    <title>Sipariş Detay</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -30,12 +30,6 @@
 
                     <div class="col-sm-2">
 
-                        <select class="form-select" name="cPage" id="cPage">
-                            <option value="5" >5</option>
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="-1">Hepsi</option>
-                        </select>
 
                     </div>
 
@@ -63,26 +57,34 @@
             <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Müşteri ID</th>
-                    <th scope="col">Ürün ID</th>
-                    <th scope="col">Sipariş Ayrıntısı</th>
-                    <th scope="col">Gönderim Tarihi</th>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <th scope="col">Kullanıcı Soyadı</th>
+                    <th scope="col">Kullanıcı Mail</th>
                     <th scope="col">Kullanıcı Adresi</th>
-                    <th scope="col">İşlemler</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyat</th>
                 </tr>
                 </thead>
                 <tbody id="contentRow">
-                <tr th:each="item,iter : ${orderList}">
-                    <td th:text="${item.getCustomerid()}"></td>
-                    <td th:text="${item.getProductid()}"></td>
-                    <td><a th:href="@{orders/detail/{id} (id =${item.getCustomerid()})}">Sipariş Detay </a></td>
-                    <td th:text="${item.getOrderDate()}"></td>
+                <tr th:each="item,iter : ${productList}">
+                    <td th:text="${item.getCname()}"></td>
+                    <td th:text="${item.getSurname()}"></td>
+                    <td th:text="${item.getEmail()}"></td>
                     <td th:text="${item.getAdress()}"></td>
-                    <td >
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a th:href="@{orders/delete/{id} (id =${item.getCustomerid()})}"><button  type="button" class="btn btn-outline-primary "><i class="far fa-trash-alt"></i></button></a>
-                        </div>
-                    </td>
+                    <td th:text="${item.getName()}"></td>
+                    <td th:text="${item.getQuantity()}"></td>
+                    <td th:text="${item.getPrice()}"></td>
+                </tr>
+                <tr>
+
+                    <td><span>Toplam Tutar</span> <span  th:text=" ${totalPrice}  "></span> <span>₺</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a th:href="@{/orders/complete/{id} (id = ${customerid})}"><button type="button" class="btn btn-info"> Siparişi Tamamla </button></a></td>
                 </tr>
                 </tbody>
             </table>
@@ -96,10 +98,7 @@
 
         <div class="col-sm-7">
             <div style="float: right">
-                <button type="button" class="btn btn-light"> İlk </button>
-                <button type="button" class="btn btn-light"> <<< </button>
-                <button type="button" class="btn btn-light"> >>> </button>
-                <button type="button" class="btn btn-light"> Son </button>
+
             </div>
 
         </div>
