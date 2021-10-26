@@ -22,6 +22,13 @@ public interface NewsRepository extends JpaRepository<News,Integer> {
     @Query(value = "SELECT * FROM news as n INNER JOIN news_category as nc on n.news_category_ncid = nc.ncid where nc.ncid = :id", nativeQuery = true)
     List<News> findCategory(Integer id);
 
+    @Query("select n from News n where n.nstatus = true")
+    List<News> activeNews();
+
+    @Query("select n from News n where n.nstatus = false")
+    List<News> passiveNews();
+
+
 
 
 }
