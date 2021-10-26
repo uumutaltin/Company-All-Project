@@ -280,7 +280,7 @@ public class SurveyController {
         if (!bindingResult.hasErrors()) {
 
         lsx = surveyRedis.getOptions();
-            System.out.println("herşey yusuf için:"+ lsx);
+            System.out.println("lsx : "+ lsx);
 
 
 
